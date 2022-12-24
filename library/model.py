@@ -18,8 +18,8 @@ class Books(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
     page_count = db.Column(db.Integer)
-    author_id = db.Column(db.String(10))
-    category_id = db.Column(db.String(10))
+    author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
 
     def __init__(sefl, name, page_count, author_id, category_id):
         sefl.name = name
