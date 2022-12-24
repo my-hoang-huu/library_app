@@ -8,7 +8,7 @@ import os
 def create_db():
     if not os.path.exists("library/library.db"):
         db.create_all()
-        print("Created DB!!!")
+        print("Created DB!.!")
 
 def create_app(config_file = "config.py"):
     app = Flask(__name__)
