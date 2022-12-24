@@ -13,7 +13,6 @@ class Students(db.Model):
         sefl.gender = gender
         sefl.class_name = class_name
 
-
 class Books(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
