@@ -7,7 +7,7 @@ import os
 
 
 def create_db():
-    if not os.path.exists("library/library.db"):
+    if not os.path.exists("instance/library.db"):
         db.create_all()
         print("Created DB!.!")
 
