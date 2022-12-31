@@ -6,6 +6,17 @@ import 'package:library_app/screens/details/details_screen.dart';
 import '../constants.dart';
 import '../size_config.dart';
 
+import 'package:http/http.dart' as http;
+
+const sourceUrl = "http://10.0.2.2:5000/book-management/books";
+final url = Uri.parse(sourceUrl);
+
+Map<String, String> requestHeaders = {
+  'Content-type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer sfie32831542543460'
+};
+
 class ProductCard extends StatelessWidget {
   const ProductCard({
     Key? key,
@@ -65,7 +76,11 @@ class ProductCard extends StatelessWidget {
                   ),
                   InkWell(
                     borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
+                    onTap: () async {
+                      print(["ON HEART PRESS"]);
+                      final reponse = await http.get(url);
+                      print(reponse.body);
+                    },
                     child: Container(
                       padding: EdgeInsets.all(getProportionateScreenWidth(8)),
                       height: getProportionateScreenWidth(28),
