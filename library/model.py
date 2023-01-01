@@ -3,13 +3,13 @@ from .extension import db
 class Students(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
-    birth_date = db.Column(db.Date)
+    student_code = db.Column(db.String, nullable = False)
     gender = db.Column(db.String(10))
     class_name = db.Column(db.String(10))
 
     def __init__(sefl, name, birth_date, gender, class_name):
         sefl.name = name
-        sefl.birth_date = birth_date
+        sefl.student_code = birth_date
         sefl.gender = gender
         sefl.class_name = class_name
 
