@@ -4,7 +4,12 @@ from .extension import ma
 
 class StudentSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'birth_date', 'gender', 'class_name')
+        fields = ('id', 'name', 'student_code', 'gender', 'class_name')
+        
+        
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'age', 'gender', 'class_name', 'avatar_link', 'address', 'email')
 
 
 class CatSchema(ma.Schema):
