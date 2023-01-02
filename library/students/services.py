@@ -49,9 +49,16 @@ def update_student_by_id_service(id):
     student = Students.query.get(id)
     data = request.json
     if student:
-        if data and "student_code" in data:
+        if data:
             try:
-                student.student_code = data["student_code"]
+                if("name" in data):
+                    student.name = data["name"]
+                if("student_code" in data):
+                    student.student_code = data["student_code"]
+                if("gender" in data):
+                    student.gender = data["gender"]
+                if("class_name" in data):
+                    student.class_name = data["class_name"]
                 db.session.commit()
                 return "Student Updated"
             except IndentationError:
