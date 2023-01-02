@@ -3,7 +3,18 @@ import 'package:library_app/components/default_button.dart';
 import 'package:library_app/screens/home/home_screen.dart';
 import 'package:library_app/size_config.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1), () => Navigator.pushNamed(context, HomeScreen.routeName));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
