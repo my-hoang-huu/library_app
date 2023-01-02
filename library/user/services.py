@@ -1,6 +1,6 @@
 from library.extension import db
 from library.library_ma import UserSchema
-from library.model import Author, Users, Category
+from library.model import Author, User, Category
 from flask import request, jsonify
 from sqlalchemy.sql import func
 import json
@@ -12,13 +12,17 @@ users_schema = UserSchema(many=True)
 def add_user_service():
     data = request.json
     if (data and ('name' in data) and ('user_code' in data)
-            and ('gender' in data) and ('class_name' in data)):
-        name = data['name']
-        user_code = data['user_code']
-        gender = data['gender']
-        class_name = data['class_name']
+            and ('gender' in data) and ('age' in data) 
+            and ('avatar_link' in data) and ('address' in data) and ('email' in data)):
+        name = data["name"]
+        user_code = data["user_code"]
+        email = data["email"]
+        address = data["address"]
+        avatar_link = data["avatar_link"]
+        age = data["age"]
+        gender = data["gender"]
         try:
-            new_user = Users(name, user_code, gender, class_name)
+            new_user = User(name, user_code, email, address, avatar_link, age, gender)
             db.session.add(new_user)
             db.session.commit()
             return jsonify({"message": "Add success!"}), 200
@@ -30,7 +34,7 @@ def add_user_service():
 
 
 def get_user_by_id_service(id):
-    user = Users.query.get(id)
+    user = User.query.get(id)
     if user:
         return user_schema.jsonify(user)
     else:
@@ -38,7 +42,7 @@ def get_user_by_id_service(id):
 
 
 def get_all_users_service():
-    users = Users.query.all()
+    users = User.query.all()
     if users:
         return users_schema.jsonify(users)
     else:
@@ -46,7 +50,7 @@ def get_all_users_service():
 
 
 def update_user_by_id_service(id):
-    user = Users.query.get(id)
+    user = User.query.get(id)
     data = request.json
     if user:
         if data and "user_code" in data:
@@ -62,7 +66,7 @@ def update_user_by_id_service(id):
 
 
 def delete_user_by_id_service(id):
-    user = Users.query.get(id)
+    user = User.query.get(id)
     if user:
         try:
             db.session.delete(user)

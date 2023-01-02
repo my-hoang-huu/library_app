@@ -2,6 +2,7 @@ from flask import Flask, request, Blueprint
 from .books.controller import books
 from .students.controller import students
 from .borrow.controller import borrow
+from .user.controller import users
 from .extension import db, ma
 from .model import Students, Books, Author, Category, Borrows
 import os
@@ -22,4 +23,5 @@ def create_app(config_file = "config.py"):
     app.register_blueprint(books)
     app.register_blueprint(students)
     app.register_blueprint(borrow)
+    app.register_blueprint(users)
     return app

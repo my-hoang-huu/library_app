@@ -9,7 +9,7 @@ class StudentSchema(ma.Schema):
         
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'age', 'gender', 'class_name', 'avatar_link', 'address', 'email')
+        fields = ('id', 'name', 'age', 'gender', 'user_code', 'avatar_link', 'address', 'email')
 
 
 class CatSchema(ma.Schema):

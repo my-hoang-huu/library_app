@@ -17,15 +17,21 @@ class Students(db.Model):
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
-    student_code = db.Column(db.String, nullable = False)
+    user_code = db.Column(db.String, nullable = False)
+    email = db.Column(db.String(100), nullable = False)
+    address = db.Column(db.String, nullable = False)
+    avatar_link = db.Column(db.String)
+    age = db.Column(db.Integer)
     gender = db.Column(db.String(10))
-    class_name = db.Column(db.String(10))
 
-    def __init__(sefl, name, birth_date, gender, class_name):
+    def __init__(sefl,  name, user_code, email, address, avatar_link, age, gender):
         sefl.name = name
-        sefl.student_code = birth_date
+        sefl.user_code = user_code
+        sefl.email = email
+        sefl.address = address
+        sefl.avatar_link = avatar_link
+        sefl.age = age
         sefl.gender = gender
-        sefl.class_name = class_name
         
 
 class Books(db.Model):
