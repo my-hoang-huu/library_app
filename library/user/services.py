@@ -53,14 +53,27 @@ def update_user_by_id_service(id):
     user = User.query.get(id)
     data = request.json
     if user:
-        if data and "user_code" in data:
+        if data:
             try:
-                user.user_code = data["user_code"]
+                if("name" in data):
+                    user.name = data["name"]
+                if("user_code" in data):
+                    user.user_code = data["user_code"]
+                if("email" in data):
+                    user.email = data["email"]
+                if("address" in data):
+                    user.address = data["address"]
+                if("avatar_link" in data):
+                    user.avatar_link = data["avatar_link"]
+                if("age" in data):
+                    user.age = data["age"]
+                if("gender" in data):
+                    user.gender = data["gender"]
                 db.session.commit()
                 return "User Updated"
             except IndentationError:
                 db.session.rollback()
-                return jsonify({"message": "Can not delete user!"}), 400
+                return jsonify({"message": "Can not update user!"}), 400
     else:
         return "Not found user"
 
