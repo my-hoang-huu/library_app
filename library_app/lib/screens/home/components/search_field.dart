@@ -17,6 +17,7 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
+        autofocus: false,
         onChanged: (value) => print(value),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(

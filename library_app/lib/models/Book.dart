@@ -21,7 +21,7 @@ class Book {
   });
 }
 
-// Our demo Products
+// Our demo Books
 
 List<Book> demoBooks = [
   Book(
@@ -48,7 +48,7 @@ List<Book> demoBooks = [
   Book(
     id: 2,
     images: [
-      "assets/images/Image Popular Product 2.png",
+      "assets/images/Image Popular Book 2.png",
     ],
     colors: [
       Color(0xFFF6625E),

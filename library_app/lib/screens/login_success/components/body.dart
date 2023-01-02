@@ -7,6 +7,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: SizeConfig.screenHeight * 0.04),
         Image.asset(
@@ -23,13 +24,15 @@ class Body extends StatelessWidget {
           ),
         ),
         Spacer(),
-        SizedBox(
-          width: SizeConfig.screenWidth * 0.6,
-          child: DefaultButton(
-            text: "Back to home",
-            press: () {
-              Navigator.pushNamed(context, HomeScreen.routeName);
-            },
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          child: SizedBox(
+            child: DefaultButton(
+              text: "Back to home",
+              press: () {
+                Navigator.pushNamed(context, HomeScreen.routeName);
+              },
+            ),
           ),
         ),
         Spacer(),

@@ -36,14 +36,14 @@ class _BookImagesState extends State<BookImages> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(widget.book.images.length, (index) => buildSmallProductPreview(index)),
+            ...List.generate(widget.book.images.length, (index) => buildSmallBookPreview(index)),
           ],
         )
       ],
     );
   }
 
-  GestureDetector buildSmallProductPreview(int index) {
+  GestureDetector buildSmallBookPreview(int index) {
     return GestureDetector(
       onTap: () {
         setState(() {
