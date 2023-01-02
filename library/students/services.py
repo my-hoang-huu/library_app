@@ -63,7 +63,7 @@ def update_student_by_id_service(id):
                 return "Student Updated"
             except IndentationError:
                 db.session.rollback()
-                return jsonify({"message": "Can not delete student!"}), 400
+                return jsonify({"message": "Can not update student!"}), 400
     else:
         return "Not found student"
 

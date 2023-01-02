@@ -49,14 +49,21 @@ def update_book_by_id_service(id):
     book = Books.query.get(id)
     data = request.json
     if book:
-        if data and "page_count" in data:
+        if data:
             try:
-                book.page_count = data["page_count"]
+                if("name" in data):
+                    book.name = data["name"]
+                if("page_count" in data):
+                    book.page_count = data["page_count"]
+                if("author_id" in data):
+                    book.author_id = data["author_id"]
+                if("category_id" in data):
+                    book.category_id = data["category_id"]
                 db.session.commit()
                 return "Book Updated"
             except IndentationError:
                 db.session.rollback()
-                return jsonify({"message": "Can not delete book!"}), 400
+                return jsonify({"message": "Can not update book!"}), 400
     else:
         return "Not found book"
 
