@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/default_button.dart';
-import 'package:library_app/models/Product.dart';
+import 'package:library_app/models/Book.dart';
 import 'package:library_app/size_config.dart';
 
 import 'color_dots.dart';
-import 'product_description.dart';
+import 'book_description.dart';
 import 'top_rounded_container.dart';
-import 'product_images.dart';
+import 'book_images.dart';
 
 class Body extends StatelessWidget {
-  final Product product;
+  final Book book;
 
-  const Body({Key? key, required this.product}) : super(key: key);
+  const Body({Key? key, required this.book}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ProductImages(product: product),
+        BookImages(book: book),
         TopRoundedContainer(
           color: Colors.white,
           child: Column(
             children: [
-              ProductDescription(
-                product: product,
+              BookDescription(
+                book: book,
                 pressOnSeeMore: () {},
               ),
               TopRoundedContainer(
                 color: Color(0xFFF6F7F9),
                 child: Column(
                   children: [
-                    ColorDots(product: product),
+                    ColorDots(book: book),
                     TopRoundedContainer(
                       color: Colors.white,
                       child: Padding(

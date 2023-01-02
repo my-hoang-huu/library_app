@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/models/Product.dart';
+import 'package:library_app/models/Book.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ProductImages extends StatefulWidget {
-  const ProductImages({
+class BookImages extends StatefulWidget {
+  const BookImages({
     Key? key,
-    required this.product,
+    required this.book,
   }) : super(key: key);
 
-  final Product product;
+  final Book book;
 
   @override
-  _ProductImagesState createState() => _ProductImagesState();
+  _BookImagesState createState() => _BookImagesState();
 }
 
-class _ProductImagesState extends State<ProductImages> {
+class _BookImagesState extends State<BookImages> {
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class _ProductImagesState extends State<ProductImages> {
           child: AspectRatio(
             aspectRatio: 1,
             child: Hero(
-              tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images[selectedImage]),
+              tag: widget.book.id.toString(),
+              child: Image.asset(widget.book.images[selectedImage]),
             ),
           ),
         ),
@@ -36,8 +36,7 @@ class _ProductImagesState extends State<ProductImages> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(
-                widget.product.images.length, (index) => buildSmallProductPreview(index)),
+            ...List.generate(widget.book.images.length, (index) => buildSmallProductPreview(index)),
           ],
         )
       ],
@@ -62,7 +61,7 @@ class _ProductImagesState extends State<ProductImages> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image.asset(widget.book.images[index]),
       ),
     );
   }

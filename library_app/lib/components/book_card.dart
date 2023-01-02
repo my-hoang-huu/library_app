@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:library_app/models/Product.dart';
+import 'package:library_app/models/Book.dart';
 import 'package:library_app/screens/details/details_screen.dart';
 
 import '../constants.dart';
@@ -17,16 +17,16 @@ Map<String, String> requestHeaders = {
   'Authorization': 'Bearer sfie32831542543460'
 };
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({
+class BookCard extends StatelessWidget {
+  const BookCard({
     Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,
-    required this.product,
+    required this.book,
   }) : super(key: key);
 
   final double width, aspectRetio;
-  final Product product;
+  final Book book;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ProductCard extends StatelessWidget {
           onTap: () => Navigator.pushNamed(
             context,
             DetailsScreen.routeName,
-            arguments: ProductDetailsArguments(product: product),
+            arguments: BookDetailsArguments(book: book),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,14 +52,14 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Hero(
-                    tag: product.id.toString(),
-                    child: Image.asset(product.images[0]),
+                    tag: book.id.toString(),
+                    child: Image.asset(book.images[0]),
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                product.title,
+                book.title,
                 style: TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -67,7 +67,7 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\$${product.price}",
+                    "\$${book.price}",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(18),
                       fontWeight: FontWeight.w600,
@@ -86,14 +86,14 @@ class ProductCard extends StatelessWidget {
                       height: getProportionateScreenWidth(28),
                       width: getProportionateScreenWidth(28),
                       decoration: BoxDecoration(
-                        color: product.isFavourite
+                        color: book.isFavourite
                             ? kPrimaryColor.withOpacity(0.15)
                             : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/Heart Icon_2.svg",
-                        color: product.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
+                        color: book.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
                       ),
                     ),
                   ),
