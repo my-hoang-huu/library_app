@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:library_app/screens/book/book_screen.dart';
 import 'package:library_app/screens/home/home_screen.dart';
 import 'package:library_app/screens/profile/profile_screen.dart';
+import 'package:library_app/screens/reader/reader_screen.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -46,12 +49,16 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: () {},
+                iconSize: 26,
+                icon: Icon(CupertinoIcons.book,
+                    color: MenuState.book == selectedMenu ? kPrimaryColor : inActiveIconColor),
+                onPressed: () => Navigator.pushNamed(context, BookScreen.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
-                onPressed: () {},
+                iconSize: 38,
+                icon: Icon(CupertinoIcons.group,
+                    color: MenuState.reader == selectedMenu ? kPrimaryColor : inActiveIconColor),
+                onPressed: () => Navigator.pushNamed(context, ReaderScreen.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
