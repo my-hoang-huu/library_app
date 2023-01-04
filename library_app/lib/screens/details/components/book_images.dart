@@ -33,12 +33,12 @@ class _BookImagesState extends State<BookImages> {
           ),
         ),
         // SizedBox(height: getProportionateScreenWidth(20)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(widget.book.images.length, (index) => buildSmallBookPreview(index)),
-          ],
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     ...List.generate(widget.book.images.length, (index) => buildSmallBookPreview(index)),
+        //   ],
+        // )
       ],
     );
   }

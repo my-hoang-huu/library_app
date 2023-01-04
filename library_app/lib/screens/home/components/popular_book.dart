@@ -37,7 +37,7 @@ class PopularBooks extends StatelessWidget {
               ...List.generate(
                 demoBooks.length,
                 (index) {
-                  if (demoBooks[index].isPopular) return BookCard(book: demoBooks[index]);
+                  if (demoBooks[index].isPopular) return BookCardHomePage(book: demoBooks[index]);
 
                   return SizedBox.shrink(); // here by default width and height is 0
                 },

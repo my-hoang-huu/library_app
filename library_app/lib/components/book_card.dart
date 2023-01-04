@@ -17,8 +17,8 @@ Map<String, String> requestHeaders = {
   'Authorization': 'Bearer sfie32831542543460'
 };
 
-class BookCard extends StatelessWidget {
-  const BookCard({
+class BookCardHomePage extends StatelessWidget {
+  const BookCardHomePage({
     Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,
