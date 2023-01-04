@@ -9,12 +9,13 @@ final demoBooks = List.generate(
     3,
     (index) => Book(
         id: index,
-        images: [],
+        images: ["assets/images/book01.png"],
         colors: [],
         name: "name",
         price: 2,
         description: description,
         pageCount: true,
+        isPopular: true,
         author: "My"));
 
 class PopularBooks extends StatelessWidget {
