@@ -10,6 +10,8 @@ abstract class MainPageLayout extends StatefulWidget {
 }
 
 abstract class MainPageLayoutState<T extends MainPageLayout> extends State<T> {
+  EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/card_layout.dart';
+import 'package:library_app/models/Book.dart';
 
 class BookCardLine extends CardLayout {
-  const BookCardLine({super.key, required super.context});
+  final Book book;
+  const BookCardLine({
+    super.key,
+    required super.context,
+    required this.book,
+  });
 
   @override
   Column contents(BuildContext context) {
@@ -10,14 +16,14 @@ class BookCardLine extends CardLayout {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Title",
+          book.name,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(
           height: 8,
         ),
         Text(
-          "Author",
+          book.author,
           style: Theme.of(context).textTheme.titleSmall,
         )
       ],

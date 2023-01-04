@@ -14,9 +14,12 @@ final demoBooks = List.generate(
         name: "name",
         price: 2,
         description: description,
-        pageCount: true));
+        pageCount: true,
+        author: "My"));
 
 class PopularBooks extends StatelessWidget {
+  const PopularBooks({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

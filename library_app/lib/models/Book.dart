@@ -8,6 +8,7 @@ class Book {
   final double rating, price;
   final bool isFavourite, isPopular;
   final bool pageCount;
+  final String author;
 
   Book({
     required this.id,
@@ -20,6 +21,7 @@ class Book {
     required this.price,
     required this.description,
     required this.pageCount,
+    required this.author,
   });
 }
 
