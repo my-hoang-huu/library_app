@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/components/custom_bottom_nav_bar.dart';
-import 'package:library_app/enums.dart';
+import 'package:library_app/screens/book/book_card.dart';
+import 'package:library_app/screens/page_layout.dart';
 
-class BookScreen extends StatelessWidget {
+class BookScreen extends MainPageLayout {
   static String routeName = "/book";
+
+  const BookScreen({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Book"),
-      // ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Card(
-            child: Text(index.toString()),
-          );
-        },
-      ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.book),
+  _BookScreenState createState() => _BookScreenState();
+}
+
+class _BookScreenState extends MainPageLayoutState<BookScreen> {
+  @override
+  ListView pageContent() {
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      itemCount: 14,
+      itemBuilder: (context, index) {
+        return BookCardLine(
+          context: context,
+        );
+      },
     );
   }
 }

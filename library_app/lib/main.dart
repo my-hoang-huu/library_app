@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/routes.dart';
-import 'package:library_app/size_config.dart';
 import 'package:library_app/theme.dart';
 
 import 'screens/sign_in/sign_in_screen.dart';
