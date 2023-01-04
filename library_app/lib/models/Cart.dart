@@ -12,8 +12,4 @@ class Cart {
 
 // Demo data for our cart
 
-List<Cart> demoCarts = [
-  Cart(book: demoBooks[0], numOfItem: 2),
-  Cart(book: demoBooks[1], numOfItem: 1),
-  Cart(book: demoBooks[3], numOfItem: 1),
-];
+List<Cart> demoCarts = [];

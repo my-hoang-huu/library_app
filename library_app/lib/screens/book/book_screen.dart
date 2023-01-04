@@ -10,7 +10,14 @@ class BookScreen extends StatelessWidget {
       // appBar: AppBar(
       //   title: Text("Book"),
       // ),
-      body: Center(child: Text("book")),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Card(
+            child: Text(index.toString()),
+          );
+        },
+      ),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.book),
     );
   }

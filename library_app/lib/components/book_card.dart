@@ -59,7 +59,7 @@ class BookCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                book.title,
+                book.name,
                 style: TextStyle(color: Colors.black),
                 maxLines: 2,
               ),

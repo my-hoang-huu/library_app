@@ -5,6 +5,17 @@ import 'package:library_app/models/Book.dart';
 import '../../../size_config.dart';
 import 'section_title.dart';
 
+final demoBooks = List.generate(
+    3,
+    (index) => Book(
+        id: index,
+        images: [],
+        colors: [],
+        name: "name",
+        price: 2,
+        description: description,
+        pageCount: true));
+
 class PopularBooks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -23,7 +23,7 @@ class BookDescription extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: Text(
-            book.title,
+            book.name,
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
