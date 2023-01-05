@@ -40,12 +40,14 @@ class Books(db.Model):
     page_count = db.Column(db.Integer)
     author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    image_id = db.Column(db.Integer)
 
-    def __init__(sefl, name, page_count, author_id, category_id):
+    def __init__(sefl, name, page_count, author_id, category_id, image_id):
         sefl.name = name
         sefl.page_count = page_count
         sefl.author_id = author_id
         sefl.category_id = category_id
+        sefl.image_id = image_id
 
 
 class Borrows(db.Model):

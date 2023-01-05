@@ -23,11 +23,11 @@ def add_image_service(image):
     db.session.add(img)
     db.session.commit()
 
-    return 'Img Uploaded!', 200
+    return img.id
     
 
-def get_image_by_id_service(id):
-    img = Image.query.filter_by(id=id).first()
+def get_image_by_id_service(key):
+    img = Image.query.filter_by(key=key).first()
     if not img:
         return 'Img Not Found!', 404
 
