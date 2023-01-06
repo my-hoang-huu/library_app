@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:library_app/const/app_const.dart';
 import 'package:library_app/models/Book.dart';
 import 'package:library_app/screens/details/details_screen.dart';
 
@@ -7,9 +8,6 @@ import '../constants.dart';
 import '../size_config.dart';
 
 import 'package:http/http.dart' as http;
-
-const sourceUrl = "http://10.0.2.2:5000/book-management/books";
-final url = Uri.parse(sourceUrl);
 
 Map<String, String> requestHeaders = {
   'Content-type': 'application/json',
@@ -78,7 +76,7 @@ class BookCardHomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     onTap: () async {
                       print(["ON HEART PRESS"]);
-                      final reponse = await http.get(url);
+                      final reponse = await http.get(DataConst.getUrl("/book-management/books"));
                       print(reponse.body);
                     },
                     child: Container(

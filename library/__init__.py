@@ -3,6 +3,7 @@ from .books.controller import books
 from .students.controller import students
 from .borrow.controller import borrow
 from .user.controller import users
+from .images.controller import images
 from .extension import db, ma
 from .model import Students, Books, Author, Category, Borrows
 import os
@@ -24,4 +25,5 @@ def create_app(config_file = "config.py"):
     app.register_blueprint(students)
     app.register_blueprint(borrow)
     app.register_blueprint(users)
+    app.register_blueprint(images)
     return app

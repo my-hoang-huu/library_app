@@ -9,7 +9,42 @@ image_schema = ImageSchema()
 images_schema = ImageSchema(many=True)
 
 
-def add_image_service(image):
+# def add_image_service():
+#     pic = request.files['image']
+#     if not pic:
+#         return 'No pic uploaded!', 400
+
+#     filename = secure_filename(pic.filename)
+#     mimetype = pic.mimetype
+#     if not filename or not mimetype:
+#         return 'Bad upload!', 400
+
+#     img = Image(img=pic.read(), name=filename, mimetype=mimetype)
+#     db.session.add(img)
+#     db.session.commit()
+
+#     return 'Upload image successfully', 200
+
+
+def add_image_service():
+    pic = request.files['image']
+    if not pic:
+        return 'No pic uploaded!', 400
+
+    filename = secure_filename(pic.filename)
+    mimetype = pic.mimetype
+    if not filename or not mimetype:
+        return 'Bad upload!', 400
+
+    img = Image(img=pic.read(), name=filename, mimetype=mimetype)
+    
+    db.session.add(img)
+    db.session.commit()
+
+    return 'Upload image successfully', 200
+
+
+def add_image(image):
     pic = image
     if not pic:
         return 'No pic uploaded!', 400
@@ -26,12 +61,12 @@ def add_image_service(image):
     return img.id
     
 
-def get_image_by_id_service(key):
-    img = Image.query.filter_by(key=key).first()
+def get_image_by_id_service(id):
+    img = Image.query.filter_by(id=id).first()
     if not img:
         return 'Img Not Found!', 404
 
-    return img.img
+    return Response(img.img, mimetype=img.mimetype)
     
 
 

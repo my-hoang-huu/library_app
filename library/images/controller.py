@@ -1,7 +1,7 @@
 from flask import Blueprint
-from .services import (add_image_service, get_image_by_id_service,
+from .services import (add_image, get_image_by_id_service,
                        update_image_by_id_service,
-                       delete_image_by_id_service)
+                       delete_image_by_id_service, add_image_service)
 images = Blueprint("images", __name__)
 
 # add a new image

@@ -1,5 +1,5 @@
 from library.extension import db
-from library.images.services import add_image_service
+from library.images.services import add_image
 from library.library_ma import BookSchema
 from library.model import Author, Books, Category
 from flask import request, jsonify
@@ -20,8 +20,8 @@ def add_book_service():
         author_id = data['author_id']
         category_id = data['category_id']
         image_id = None
-        if ('image' in data):
-            image_id = add_image_service(data['image'])
+        # if ('image' in data):
+        #     image_id = add_image(request.files['image'])
         try:
             new_book = Books(name, page_count, author_id, category_id, image_id)
             db.session.add(new_book)
