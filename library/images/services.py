@@ -9,23 +9,6 @@ image_schema = ImageSchema()
 images_schema = ImageSchema(many=True)
 
 
-# def add_image_service():
-#     pic = request.files['image']
-#     if not pic:
-#         return 'No pic uploaded!', 400
-
-#     filename = secure_filename(pic.filename)
-#     mimetype = pic.mimetype
-#     if not filename or not mimetype:
-#         return 'Bad upload!', 400
-
-#     img = Image(img=pic.read(), name=filename, mimetype=mimetype)
-#     db.session.add(img)
-#     db.session.commit()
-
-#     return 'Upload image successfully', 200
-
-
 def add_image_service():
     pic = request.files['image']
     if not pic:
