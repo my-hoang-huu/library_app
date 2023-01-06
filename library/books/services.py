@@ -18,11 +18,11 @@ def add_book_service():
         page_count = data['page_count']
         author_id = data['author_id']
         category_id = data['category_id']
-        image_id = None
-        # if ('image' in data):
-        #     image_id = add_image(request.files['image'])
+        image = None
+        if ('image' in data):
+            image = data['image']
         try:
-            new_book = Books(name, page_count, author_id, category_id, image_id)
+            new_book = Books(name, page_count, author_id, category_id, image)
             db.session.add(new_book)
             db.session.commit()
             return jsonify({"message": "Add success!"}), 200
