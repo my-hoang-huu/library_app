@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               imageFile = image;
               // final reponseGetBook = await http.get(DataConst.getUrl("/book-management/books"));
               // print(reponseGetBook.body);
-              result = await uploadImage(image);
+              result = await uploadImageToCreateUrl(image);
               setState(() {});
             },
           ),
@@ -49,21 +49,22 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Future<String> uploadImage(File imageFile) async {
+Future<String> uploadImageToCreateUrl(File imageFile) async {
   final request = http.MultipartRequest("POST", DataConst.getUrl("/image-management/image"));
   final headers = {"Content-type": "multipart/form-data"};
   final picture = http.MultipartFile(
       'image', imageFile.readAsBytes().asStream(), imageFile.lengthSync(),
       filename: imageFile.path.split("/").last);
-  request.files.add(picture);
 
+  request.files.add(picture);
   request.headers.addAll(headers);
+  print("request: " + request.toString());
 
   try {
     final response = await request.send();
     final res = await http.Response.fromStream(response);
     print(["image response: ", res.body]);
-    return jsonDecode(res.body)['message'];
+    return "Success";
   } catch (e) {
     print(["error:", e]);
   }

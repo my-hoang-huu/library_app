@@ -29,9 +29,6 @@ def add_image_service():
 
 def add_image(image):
     pic = image
-    if not pic:
-        return 'No pic uploaded!', 400
-
     filename = secure_filename(pic.filename)
     mimetype = pic.mimetype
     if not filename or not mimetype:
