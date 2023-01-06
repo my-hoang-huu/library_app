@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/models/Cart.dart';
+import 'package:library_app/data/models/Cart.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../../const_enum/constants.dart';
+import '../../../theme_size/size_config.dart';
 
 class CartCard extends StatelessWidget {
   const CartCard({

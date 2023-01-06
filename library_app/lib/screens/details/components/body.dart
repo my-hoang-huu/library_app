@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/default_button.dart';
-import 'package:library_app/models/Book.dart';
-import 'package:library_app/size_config.dart';
+import 'package:library_app/data/models/Book.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
 import 'color_dots.dart';
 import 'book_description.dart';

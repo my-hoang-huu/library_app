@@ -6,8 +6,8 @@ import 'package:library_app/screens/home/home_screen.dart';
 import 'package:library_app/screens/profile/profile_screen.dart';
 import 'package:library_app/screens/reader/reader_screen.dart';
 
-import '../constants.dart';
-import '../enums.dart';
+import '../const_enum/constants.dart';
+import '../const_enum/enums.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({

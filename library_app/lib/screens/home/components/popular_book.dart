@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/book_card.dart';
-import 'package:library_app/models/Book.dart';
+import 'package:library_app/data/models/Book.dart';
 
-import '../../../size_config.dart';
+import '../../../theme_size/size_config.dart';
 import 'section_title.dart';
 
 final demoBooks = List.generate(

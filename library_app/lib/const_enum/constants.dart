@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/size_config.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);

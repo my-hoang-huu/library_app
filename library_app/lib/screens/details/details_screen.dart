@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/Book.dart';
+import '../../data/models/Book.dart';
 import 'components/body.dart';
 import 'components/custom_app_bar.dart';
 

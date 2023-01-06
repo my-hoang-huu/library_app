@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/custom_bottom_nav_bar.dart';
-import 'package:library_app/enums.dart';
+import 'package:library_app/const_enum/enums.dart';
 
 abstract class MainPageLayout extends StatefulWidget {
   const MainPageLayout({super.key});

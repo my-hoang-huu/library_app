@@ -4,8 +4,8 @@ import 'package:library_app/components/default_button.dart';
 import 'package:library_app/components/form_error.dart';
 import 'package:library_app/screens/otp/otp_screen.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../../const_enum/constants.dart';
+import '../../../theme_size/size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   @override

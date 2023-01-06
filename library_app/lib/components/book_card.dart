@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:library_app/const/app_const.dart';
-import 'package:library_app/models/Book.dart';
+import 'package:library_app/const_enum/app_const.dart';
+import 'package:library_app/data/models/Book.dart';
 import 'package:library_app/screens/details/details_screen.dart';
 
-import '../constants.dart';
-import '../size_config.dart';
+import '../const_enum/constants.dart';
+import '../theme_size/size_config.dart';
 
 import 'package:http/http.dart' as http;
 

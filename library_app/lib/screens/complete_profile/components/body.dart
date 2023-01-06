@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/constants.dart';
-import 'package:library_app/size_config.dart';
+import 'package:library_app/const_enum/constants.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
 import 'complete_profile_form.dart';
 

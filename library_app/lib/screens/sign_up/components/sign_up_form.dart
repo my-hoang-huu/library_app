@@ -4,8 +4,8 @@ import 'package:library_app/components/default_button.dart';
 import 'package:library_app/components/form_error.dart';
 import 'package:library_app/screens/complete_profile/complete_profile_screen.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../../const_enum/constants.dart';
+import '../../../theme_size/size_config.dart';
 
 class SignUpForm extends StatefulWidget {
   @override

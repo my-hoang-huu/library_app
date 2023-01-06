@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:library_app/components/custom_bottom_nav_bar.dart';
 import 'package:library_app/components/default_button.dart';
 import 'package:library_app/components/image_picker_button.dart';
-import 'package:library_app/const/app_const.dart';
-import 'package:library_app/enums.dart';
+import 'package:library_app/const_enum/app_const.dart';
+import 'package:library_app/const_enum/enums.dart';
 
 class HomeScreenTest extends StatefulWidget {
   static String routeName = "/home";

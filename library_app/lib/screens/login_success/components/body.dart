@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/components/default_button.dart';
 import 'package:library_app/screens/home/home_screen.dart';
-import 'package:library_app/size_config.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
 class Body extends StatefulWidget {
   @override

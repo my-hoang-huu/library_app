@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/screens/cart/cart_screen.dart';
 
-import '../../../size_config.dart';
+import '../../../theme_size/size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
 

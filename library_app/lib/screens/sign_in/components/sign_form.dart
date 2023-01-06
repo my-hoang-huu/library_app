@@ -6,8 +6,8 @@ import 'package:library_app/screens/forgot_password/forgot_password_screen.dart'
 import 'package:library_app/screens/login_success/login_success_screen.dart';
 
 import '../../../components/default_button.dart';
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../../const_enum/constants.dart';
+import '../../../theme_size/size_config.dart';
 
 class SignForm extends StatefulWidget {
   @override

@@ -3,9 +3,9 @@ import 'package:library_app/components/custom_surfix_icon.dart';
 import 'package:library_app/components/default_button.dart';
 import 'package:library_app/components/form_error.dart';
 import 'package:library_app/components/no_account_text.dart';
-import 'package:library_app/size_config.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
-import '../../../constants.dart';
+import '../../../const_enum/constants.dart';
 
 class Body extends StatelessWidget {
   @override
