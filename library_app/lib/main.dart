@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_app/routes.dart';
 import 'package:library_app/theme_size/theme.dart';
 
-import 'screens/sign_in/sign_in_screen.dart';
+import 'presentation/screens/sign_in/sign_in_screen.dart';
 
 void main() {
   runApp(MyApp());

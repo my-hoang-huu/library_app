@@ -1,17 +1,17 @@
 import 'package:flutter/widgets.dart';
-import 'package:library_app/screens/book/book_screen.dart';
-import 'package:library_app/screens/cart/cart_screen.dart';
-import 'package:library_app/screens/complete_profile/complete_profile_screen.dart';
-import 'package:library_app/screens/details/details_screen.dart';
-import 'package:library_app/screens/home/home_screen.dart';
-import 'package:library_app/screens/profile/profile_screen.dart';
-import 'screens/forgot_password/forgot_password_screen.dart';
-import 'screens/login_success/login_success_screen.dart';
-import 'screens/otp/otp_screen.dart';
-import 'screens/reader/reader_screen.dart';
-import 'screens/sign_in/sign_in_screen.dart';
-import 'screens/sign_up/sign_up_screen.dart';
-import 'screens/splash/splash_screen.dart';
+import 'package:library_app/presentation/screens/book/book_screen.dart';
+import 'package:library_app/presentation/screens/cart/cart_screen.dart';
+import 'package:library_app/presentation/screens/complete_profile/complete_profile_screen.dart';
+import 'package:library_app/presentation/screens/details/details_screen.dart';
+import 'package:library_app/presentation/screens/home/home_screen.dart';
+import 'package:library_app/presentation/screens/profile/profile_screen.dart';
+import 'presentation/screens/forgot_password/forgot_password_screen.dart';
+import 'presentation/screens/login_success/login_success_screen.dart';
+import 'presentation/screens/otp/otp_screen.dart';
+import 'presentation/screens/reader/reader_screen.dart';
+import 'presentation/screens/sign_in/sign_in_screen.dart';
+import 'presentation/screens/sign_up/sign_up_screen.dart';
+import 'presentation/screens/splash/splash_screen.dart';
 
 // We use name route
 // All our routes will be available here
