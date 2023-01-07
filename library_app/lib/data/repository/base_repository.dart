@@ -4,8 +4,6 @@ import 'package:library_app/data/models/base_modal.dart';
 abstract class BaseRepository<T extends BaseModal> {
   T? _info;
 
-  /// DEMO
-
   Future<T?> get info async {
     if (_info != null) {
       return Future.value(_info);
@@ -25,22 +23,10 @@ abstract class BaseRepository<T extends BaseModal> {
 }
 
 class BookRepository extends BaseRepository<Book> {
-  Future<Book> _fetchData() async {
-    await Future.delayed(Duration(seconds: 1));
-
-    /// DEMO
-    // final jsonData = await _service.fetchInfo('/profile/details');
-    // _userInfo = Book.fromJson(jsonData);
-
-    return _info!;
-  }
-
-  Future<Book?> updateInfo(Book info) async {
-    /// DEMO
-    // final jsonData = await _service.updateInfo('/profile/details', jsonProfile: info.toJson());
-    // _userInfo = Book.fromJson(jsonData);
-    await Future.delayed(Duration(seconds: 1));
-    return info;
+  @override
+  Future<Book> _fetchData() {
+    // TODO: implement _fetchData
+    throw UnimplementedError();
   }
 
   @override
@@ -52,6 +38,12 @@ class BookRepository extends BaseRepository<Book> {
   @override
   Future<bool?> delete(Book modal) {
     // TODO: implement delete
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Book?> updateInfo(Book modal) {
+    // TODO: implement updateInfo
     throw UnimplementedError();
   }
 }
