@@ -31,9 +31,23 @@ class BaseService {
     }
   }
 
-  Future<Map<String, dynamic>> updateInfo(String path,
-      {required Map<String, dynamic> jsonProfile}) async {
-    final String bodyRequest = jsonEncode(jsonProfile);
+  Future<Map<String, dynamic>?> createNewInfo(String path,
+      {required Map<String, dynamic> updateMap}) async {
+    final String bodyRequest = jsonEncode(updateMap);
+
+    Response res = await post(DataConst.getUrl(path), body: bodyRequest);
+
+    if (res.statusCode == 200) {
+      Map<String, dynamic> bodyResponse = jsonDecode(res.body);
+      return bodyResponse;
+    } else {
+      return null;
+    }
+  }
+
+  Future<Map<String, dynamic>?> updateInfo(String path,
+      {required Map<String, dynamic> updateMap}) async {
+    final String bodyRequest = jsonEncode(updateMap);
 
     Response res = await put(DataConst.getUrl(path), body: bodyRequest);
 
@@ -41,7 +55,7 @@ class BaseService {
       Map<String, dynamic> bodyResponse = jsonDecode(res.body);
       return bodyResponse;
     } else {
-      throw Exception("Update information fails");
+      return null;
     }
   }
 

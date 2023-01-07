@@ -34,7 +34,7 @@ class LoadedState<M extends BaseModal> extends BaseState {
 }
 
 class SubmitSuccessState<M extends BaseModal> extends BaseState {
-  final M profileDetail;
+  final M newInfo;
   final String? successMessage;
   final String? dialogMessage;
   final String? dialogTitle;
@@ -43,7 +43,7 @@ class SubmitSuccessState<M extends BaseModal> extends BaseState {
 
   const SubmitSuccessState(
     super.type, {
-    required this.profileDetail,
+    required this.newInfo,
     this.successMessage,
     this.dialogTitle,
     this.dialogMessage,
@@ -52,7 +52,7 @@ class SubmitSuccessState<M extends BaseModal> extends BaseState {
   });
 
   @override
-  List<Object?> get props => [profileDetail, type, successMessage, messageType, preventRebuild];
+  List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
 }
 
 class ErrorState extends BaseState {

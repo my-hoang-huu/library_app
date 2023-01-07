@@ -42,11 +42,11 @@ class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
   }) async {
     emit(SendingState(type));
     try {
-      final M? newProfile = await repository.updateInfo(updateInfo);
-      if (newProfile == null) throw Exception("New profile update failed");
-
-      emit(SubmitSuccessState(type,
-          profileDetail: newProfile, successMessage: successMessage, preventRebuild: true));
+      final result = await repository.updateInfo(updateInfo);
+      if (result == true) {
+        emit(SubmitSuccessState(type,
+            newInfo: updateInfo, successMessage: successMessage, preventRebuild: true));
+      }
     } catch (e) {
       emit(ErrorState(type));
     }
