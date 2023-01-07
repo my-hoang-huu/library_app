@@ -1,16 +1,19 @@
 import 'package:library_app/data/models/Book.dart';
 import 'package:library_app/data/models/base_modal.dart';
+import 'package:library_app/data/service/service.dart';
 
 abstract class BaseRepository<T extends BaseModal> {
   T? _info;
 
+  final BaseService _service = BaseService();
+
   Future<T?> get info async {
     if (_info != null) {
-      return Future.value(_info);
+      return _info;
     } else {
       _info = await _fetchData();
-      return _info;
     }
+    return _info;
   }
 
   Future<T> _fetchData();
@@ -24,14 +27,14 @@ abstract class BaseRepository<T extends BaseModal> {
 
 class BookRepository extends BaseRepository<Book> {
   @override
-  Future<Book> _fetchData() {
-    // TODO: implement _fetchData
-    throw UnimplementedError();
+  Future<Book> _fetchData() async {
+    final Map<String, dynamic> mapData = await _service.fetchInfo('/book-management/book');
+    print(["base_repository: ", mapData]);
+    return Book.fromMap(mapData);
   }
 
   @override
   Future<bool?> createNew(Book modal) {
-    // TODO: implement createNew
     throw UnimplementedError();
   }
 

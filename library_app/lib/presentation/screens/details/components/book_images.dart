@@ -28,17 +28,17 @@ class _BookImagesState extends State<BookImages> {
             aspectRatio: 1,
             child: Hero(
               tag: widget.book.id.toString(),
-              child: Image.asset(widget.book.images[selectedImage]),
+              child: Image.asset(widget.book.image),
             ),
           ),
         ),
-        // SizedBox(height: getProportionateScreenWidth(20)),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     ...List.generate(widget.book.images.length, (index) => buildSmallBookPreview(index)),
-        //   ],
-        // )
+        SizedBox(height: getProportionateScreenWidth(20)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ...List.generate(0, (index) => buildSmallBookPreview(index)),
+          ],
+        )
       ],
     );
   }
@@ -61,7 +61,7 @@ class _BookImagesState extends State<BookImages> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.book.images[index]),
+        // child: Image.asset(widget.book.images[index]),
       ),
     );
   }

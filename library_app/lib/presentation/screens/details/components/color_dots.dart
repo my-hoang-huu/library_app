@@ -21,13 +21,13 @@ class ColorDots extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
-          ...List.generate(
-            book.colors.length,
-            (index) => ColorDot(
-              color: book.colors[index],
-              isSelected: index == selectedColor,
-            ),
-          ),
+          // ...List.generate(
+          //   book.colors.length,
+          //   (index) => ColorDot(
+          //     color: book.colors[index],
+          //     isSelected: index == selectedColor,
+          //   ),
+          // ),
           Spacer(),
           RoundedIconBtn(
             icon: Icons.remove,

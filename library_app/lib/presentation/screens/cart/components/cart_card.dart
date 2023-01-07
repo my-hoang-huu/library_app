@@ -14,6 +14,7 @@ class CartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final image = cart.book.image;
     return Row(
       children: [
         SizedBox(
@@ -26,7 +27,7 @@ class CartCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.book.images[0]),
+              child: image == null ? null : Image.asset(image),
             ),
           ),
         ),

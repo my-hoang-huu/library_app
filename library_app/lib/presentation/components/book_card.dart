@@ -28,6 +28,7 @@ class BookCardHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final image = book.image;
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: SizedBox(
@@ -49,10 +50,12 @@ class BookCardHomePage extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Hero(
-                    tag: book.id.toString(),
-                    child: Image.asset(book.images[0]),
-                  ),
+                  child: image == null
+                      ? null
+                      : Hero(
+                          tag: book.id.toString(),
+                          child: Image.asset(image),
+                        ),
                 ),
               ),
               const SizedBox(height: 10),
@@ -84,14 +87,14 @@ class BookCardHomePage extends StatelessWidget {
                       height: getProportionateScreenWidth(28),
                       width: getProportionateScreenWidth(28),
                       decoration: BoxDecoration(
-                        color: book.isFavourite
+                        color: book.isFavourite == true
                             ? kPrimaryColor.withOpacity(0.15)
                             : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/Heart Icon_2.svg",
-                        color: book.isFavourite ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
+                        color: book.isFavourite == true ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
                       ),
                     ),
                   ),

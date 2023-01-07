@@ -9,11 +9,9 @@ final demoBooks = List.generate(
     3,
     (index) => Book(
         id: index,
-        images: ["assets/images/book01.png"],
-        colors: [],
+        image: "assets/images/book01.png",
         name: "name",
         price: 2,
-        description: description,
         pageCount: true,
         isPopular: true,
         author: "My"));
@@ -37,7 +35,8 @@ class PopularBooks extends StatelessWidget {
               ...List.generate(
                 demoBooks.length,
                 (index) {
-                  if (demoBooks[index].isPopular) return BookCardHomePage(book: demoBooks[index]);
+                  if (demoBooks[index].isPopular == true)
+                    return BookCardHomePage(book: demoBooks[index]);
 
                   return SizedBox.shrink(); // here by default width and height is 0
                 },
