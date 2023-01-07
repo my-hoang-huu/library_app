@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Book {
+import 'base_modal.dart';
+
+class Book extends BaseModal {
   final int id;
   final String name, description;
   final List<String> images;
@@ -28,4 +30,4 @@ class Book {
 // Our demo Books
 
 const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+    "JavaScript lies at the heart of almost every modern web application, from social apps like Twitter to browser-based game frameworks like Phaser and Babylon. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.";

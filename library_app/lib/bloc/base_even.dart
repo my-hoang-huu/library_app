@@ -2,24 +2,25 @@ import 'package:equatable/equatable.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
 
-abstract class UpdateProfileEvent extends Equatable {
-  const UpdateProfileEvent();
+/// evens are sent by client to request something from server
+
+abstract class BaseEvent extends Equatable {
+  const BaseEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-class UpdateProfileStarted extends UpdateProfileEvent {
-  final UpdateProfileType type;
+class StartedEvent extends BaseEvent {
+  final ModalType type;
 
-  UpdateProfileStarted(this.type);
+  const StartedEvent(this.type);
 }
 
-class UpdateProfileDetailSubmitted extends UpdateProfileEvent {
-  final UserUpdateInfo userInfo;
+class SubmittedEvent<M extends BaseModal> extends BaseEvent {
+  final M info;
 
-  UpdateProfileDetailSubmitted(this.userInfo);
-  List<Object?> get props => [userInfo];
+  const SubmittedEvent(this.info);
+  @override
+  List<Object?> get props => [info];
 }
-
-class UpdateProfileUnfocused extends UpdateProfileEvent {}

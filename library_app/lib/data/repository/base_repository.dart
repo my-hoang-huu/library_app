@@ -1,41 +1,57 @@
+import 'package:library_app/data/models/Book.dart';
 import 'package:library_app/data/models/base_modal.dart';
 
-abstract class ProfileDetailRepository<T extends ProfileDetail> {
-  T? _userInfo;
+abstract class BaseRepository<T extends BaseModal> {
+  T? _info;
 
   /// DEMO
 
-  Future<T> get info async {
-    if (_userInfo != null) {
-      return Future.value(_userInfo);
+  Future<T?> get info async {
+    if (_info != null) {
+      return Future.value(_info);
     } else {
-      _userInfo = await _fetchData();
-      if (_userInfo == null) throw Exception("Đã có lỗi xảy ra khi tải dữ liệu");
-      return _userInfo!;
+      _info = await _fetchData();
+      return _info;
     }
   }
 
   Future<T> _fetchData();
 
-  Future<T?> updateInfo(T info);
+  Future<T?> updateInfo(T modal);
+
+  Future<bool?> createNew(T modal);
+
+  Future<bool?> delete(T modal);
 }
 
-class UserUpdateRepository extends ProfileDetailRepository<UserUpdateInfo> {
-  Future<UserUpdateInfo> _fetchData() async {
+class BookRepository extends BaseRepository<Book> {
+  Future<Book> _fetchData() async {
     await Future.delayed(Duration(seconds: 1));
 
     /// DEMO
     // final jsonData = await _service.fetchInfo('/profile/details');
-    // _userInfo = UserUpdateInfo.fromJson(jsonData);
+    // _userInfo = Book.fromJson(jsonData);
 
-    return _userInfo!;
+    return _info!;
   }
 
-  Future<UserUpdateInfo?> updateInfo(UserUpdateInfo info) async {
+  Future<Book?> updateInfo(Book info) async {
     /// DEMO
     // final jsonData = await _service.updateInfo('/profile/details', jsonProfile: info.toJson());
-    // _userInfo = UserUpdateInfo.fromJson(jsonData);
+    // _userInfo = Book.fromJson(jsonData);
     await Future.delayed(Duration(seconds: 1));
     return info;
+  }
+
+  @override
+  Future<bool?> createNew(Book modal) {
+    // TODO: implement createNew
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> delete(Book modal) {
+    // TODO: implement delete
+    throw UnimplementedError();
   }
 }

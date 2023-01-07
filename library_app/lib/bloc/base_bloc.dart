@@ -6,56 +6,49 @@ import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/repository/base_repository.dart';
 
-class UpdateProfileBloc<T extends ProfileDetail, R extends ProfileDetailRepository<T>>
-    extends Bloc<UpdateProfileEvent, UpdateProfileState> {
-  final R profileDetailRepository;
-  final UpdateProfileType type;
+class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
+    extends Bloc<BaseEvent, BaseState> {
+  final R repository;
+  final ModalType type;
 
-  UpdateProfileBloc({required this.profileDetailRepository, required this.type})
-      : super(UpdateProfileLoading(type)) {
-    on<UpdateProfileStarted>(_onStarted);
-    on<UpdateProfileDetailSubmitted>(_onProfileInfoSubmitted);
+  BaseBloc({required this.repository, required this.type}) : super(LoadingState(type)) {
+    on<StartedEvent>(_onStarting);
+    on<SubmittedEvent<M>>(_inSubmiting);
   }
 
-  Future<FutureOr<void>> _onStarted(
-      UpdateProfileStarted event, Emitter<UpdateProfileState> emit) async {
-    emit(UpdateProfileLoading(event.type));
+  Future<FutureOr<void>> _onStarting(StartedEvent event, Emitter<BaseState> emit) async {
+    emit(LoadingState(event.type));
     try {
-      final T? profile = await profileDetailRepository.info;
+      final M? profile = await repository.info;
       if (profile == null) throw Exception("profile response is empty");
-      emit(UpdateProfileLoaded(profileDetail: profile, type: event.type));
+      emit(LoadedState(event.type, profileDetail: profile));
     } catch (e) {
-      emit(UpdateProfileError(type: event.type, error: e.toString()));
+      emit(ErrorState(event.type, error: e.toString()));
     }
   }
 
-  Future<FutureOr<void>> _onProfileInfoSubmitted(
-      UpdateProfileDetailSubmitted event, Emitter<UpdateProfileState> emit) async {
-    final T profileUpdate = event.userInfo as T;
-    return _onSubmitted(
-      profileUpdate: profileUpdate,
+  Future<FutureOr<void>> _inSubmiting(SubmittedEvent<M> event, Emitter<BaseState> emit) async {
+    final M updateInfo = event.info;
+    return _handleSubmission(
+      updateInfo: updateInfo,
       emit: emit,
     );
   }
 
-  Future<FutureOr<void>> _onSubmitted({
-    required T profileUpdate,
-    required Emitter<UpdateProfileState> emit,
+  Future<FutureOr<void>> _handleSubmission({
+    required M updateInfo,
+    required Emitter<BaseState> emit,
     String? successMessage,
   }) async {
-    emit(UpdateProfileSending(type));
-
+    emit(SendingState(type));
     try {
-      final T? newProfile = await profileDetailRepository.updateInfo(profileUpdate);
+      final M? newProfile = await repository.updateInfo(updateInfo);
       if (newProfile == null) throw Exception("New profile update failed");
 
-      emit(UpdateProfileSuccess(
-          profileDetail: newProfile,
-          type: type,
-          successMessage: successMessage,
-          preventRebuild: true));
+      emit(SubmitSuccessState(type,
+          profileDetail: newProfile, successMessage: successMessage, preventRebuild: true));
     } catch (e) {
-      emit(UpdateProfileError(type: type));
+      emit(ErrorState(type));
     }
   }
 }
