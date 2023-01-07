@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/presentation/components/book_card.dart';
-import 'package:library_app/data/models/Book.dart';
+import 'package:library_app/data/models/book.dart';
 
 import '../../../../theme_size/size_config.dart';
 import 'section_title.dart';

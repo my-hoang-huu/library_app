@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/data/models/Book.dart';
+import 'package:library_app/data/models/book.dart';
 import 'package:library_app/presentation/screens/book/book_card.dart';
 import 'package:library_app/presentation/screens/home/components/popular_book.dart';
 import 'package:library_app/presentation/screens/page_layout.dart';

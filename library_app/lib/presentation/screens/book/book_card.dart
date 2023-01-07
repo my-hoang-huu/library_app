@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
-import 'package:library_app/data/models/Book.dart';
+import 'package:library_app/data/models/book.dart';
 
 class BookCardLine extends CardLayout {
   final Book book;
