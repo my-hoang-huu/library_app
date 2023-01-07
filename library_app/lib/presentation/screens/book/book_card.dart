@@ -12,6 +12,7 @@ class BookCardLine extends CardLayout {
 
   @override
   Column contents(BuildContext context) {
+    final author = book.author;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,10 +23,11 @@ class BookCardLine extends CardLayout {
         const SizedBox(
           height: 8,
         ),
-        Text(
-          book.author,
-          style: Theme.of(context).textTheme.titleSmall,
-        )
+        if (author != null)
+          Text(
+            author,
+            style: Theme.of(context).textTheme.titleSmall,
+          )
       ],
     );
   }
