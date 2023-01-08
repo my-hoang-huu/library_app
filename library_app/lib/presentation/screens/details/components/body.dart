@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/presentation/components/bottom_sheet/book_bottom_sheet.dart';
+import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
 import 'package:library_app/presentation/components/default_button.dart';
 import 'package:library_app/data/models/book.dart';
 import 'package:library_app/theme_size/size_config.dart';
@@ -55,7 +57,14 @@ class Body extends StatelessWidget {
                             Expanded(
                               child: DefaultButton(
                                 text: "Update Book",
-                                press: () {},
+                                press: () {
+                                  showCustomBottomSheet(
+                                      context: context,
+                                      bottomSheetWidget: const BookBottomSheet(
+                                        title: "Update",
+                                        buttonTitle: "Save",
+                                      ));
+                                },
                               ),
                             ),
                           ],

@@ -79,8 +79,8 @@ class BookCardHomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     onTap: () async {
                       print(["ON HEART PRESS"]);
-                      final reponse = await http.get(DataConst.getUrl("/book-management/books"));
-                      print(reponse.body);
+                      // final reponse = await http.get(DataConst.getUrl("/book-management/books"));
+                      // print(reponse.body);
                     },
                     child: Container(
                       padding: EdgeInsets.all(getProportionateScreenWidth(8)),

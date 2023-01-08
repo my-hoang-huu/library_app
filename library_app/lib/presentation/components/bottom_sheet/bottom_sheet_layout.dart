@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/presentation/components/default_button.dart';
 
 import '../text_form_field_custom.dart';
 
@@ -14,9 +15,9 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
         height: 16,
       );
 
-  String get title => "Bộ lọc";
+  String get title;
 
-  bool get needFilter => true;
+  String get buttonTitle;
 
   double get horizontalPadding => 16;
 
@@ -54,7 +55,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ...body(context),
-                  if (needFilter) ...bottomButton(),
+                  ...bottomButton(),
                 ],
               ),
             ),
@@ -85,7 +86,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
       const SizedBox(
         height: 32,
       ),
-      ElevatedButton(onPressed: () {}, child: const Text("Lọc")),
+      DefaultButton(press: () {}, text: buttonTitle),
     ];
   }
 
@@ -125,7 +126,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
   }
 }
 
-Future<dynamic> showFilterBottomSheet<T extends BottomSheetLayout>(
+Future<dynamic> showCustomBottomSheet<T extends BottomSheetLayout>(
     {required BuildContext context, required T bottomSheetWidget}) {
   return showModalBottomSheet(
     context: context,

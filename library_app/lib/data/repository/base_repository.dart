@@ -72,6 +72,19 @@ class BookRepository extends BaseRepository<Book> {
 class BookListRepository extends BaseRepository<BookList> {
   @override
   Future<BookList> _fetchData() async {
+    return Future.value(BookList(List.generate(
+        3,
+        (index) => Book(
+            description: "",
+            id: index,
+            image: "assets/images/book01.png",
+            name: "test",
+            price: 2,
+            pageCount: 200,
+            isPopular: true,
+            author: "My"))));
+
+    ///real function
     final List mapData = await _service.fetchInfo('/book-management/books');
     if (kDebugMode) {
       print(["base_repository: ", mapData]);
