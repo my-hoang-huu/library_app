@@ -55,7 +55,10 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ...body(context),
-                  ...bottomButton(),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  DefaultButton(press: onSubmit(context), text: buttonTitle),
                 ],
               ),
             ),
@@ -68,6 +71,8 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
     );
   }
 
+  onSubmit(BuildContext context);
+
   List<Widget> body(BuildContext context);
 
   Container _topGreyLine(BuildContext context) {
@@ -79,15 +84,6 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
         borderRadius: BorderRadius.circular(3),
       ),
     );
-  }
-
-  List<Widget> bottomButton() {
-    return [
-      const SizedBox(
-        height: 32,
-      ),
-      DefaultButton(press: () {}, text: buttonTitle),
-    ];
   }
 
   Widget dateLine(BuildContext context,

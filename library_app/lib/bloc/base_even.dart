@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:library_app/data/models/base_modal.dart';
+import 'package:library_app/data/models/book.dart';
 
 /// evens are sent by client to request something from server
 
@@ -20,4 +21,12 @@ class SubmittedEvent<M extends BaseModal> extends BaseEvent {
   const SubmittedEvent(this.info);
   @override
   List<Object?> get props => [info];
+}
+
+class SubmittedBookEvent extends BaseEvent {
+  final Book book;
+
+  const SubmittedBookEvent(this.book);
+  @override
+  List<Object?> get props => [book];
 }

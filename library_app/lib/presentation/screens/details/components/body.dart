@@ -60,9 +60,10 @@ class Body extends StatelessWidget {
                                 press: () {
                                   showCustomBottomSheet(
                                       context: context,
-                                      bottomSheetWidget: const BookBottomSheet(
+                                      bottomSheetWidget: BookBottomSheet(
                                         title: "Update",
                                         buttonTitle: "Save",
+                                        currentBook: book,
                                       ));
                                 },
                               ),
