@@ -18,6 +18,13 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
     R extends BaseRepository<M>> extends State<T> {
   EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 
+  bool _buildWhen(BaseState previous, BaseState current) =>
+      current.type == screenType &&
+      current is! SendingState &&
+      !(current is SubmitSuccessState && current.preventRebuild);
+
+  bool _listenWhen(BaseState previous, BaseState current) => current.type == screenType;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,4 +58,6 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
   MainMenu get getTab;
 
   bool get hasAppbar;
+
+  ModalType get screenType;
 }

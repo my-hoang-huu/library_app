@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
 
 import '../../../data/models/book.dart';
@@ -44,4 +45,7 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookReposit
 
   @override
   Color? get backgroundColor => Colors.grey.shade100;
+
+  @override
+  ModalType get screenType => ModalType.book;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/repository/base_repository.dart';
 import 'package:library_app/presentation/screens/page_layout.dart';
@@ -29,4 +30,7 @@ class _HomeScreenState extends MainPageLayoutState<HomeScreen, Book, BookReposit
 
   @override
   bool get hasAppbar => false;
+
+  @override
+  ModalType get screenType => ModalType.book;
 }
