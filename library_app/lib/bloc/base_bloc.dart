@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
-import 'package:library_app/data/repository/base_repository.dart';
+import 'package:library_app/data/repository/base_list_repository.dart';
 
 class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
     extends Bloc<BaseEvent, BaseState> {

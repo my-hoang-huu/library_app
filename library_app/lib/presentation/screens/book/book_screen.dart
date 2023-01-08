@@ -3,7 +3,7 @@ import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
 
 import '../../../data/models/book.dart';
-import '../../../data/repository/base_repository.dart';
+import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
 import 'book_card.dart';
 
