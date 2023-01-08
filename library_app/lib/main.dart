@@ -7,6 +7,7 @@ import 'package:library_app/theme_size/theme.dart';
 import 'bloc/base_bloc.dart';
 import 'bloc/base_state.dart';
 import 'data/models/book.dart';
+import 'data/models/list_book.dart';
 import 'data/repository/base_repository.dart';
 import 'presentation/screens/sign_in/sign_in_screen.dart';
 
@@ -22,13 +23,21 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (context) => BookRepository(),
-        )
+        ),
+        RepositoryProvider(
+          create: (context) => BookListRepository(),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => BaseBloc<Book, BookRepository>(
                 repository: context.read<BookRepository>(), type: ModalType.book)
+              ..add(const StartedEvent()),
+          ),
+          BlocProvider(
+            create: (context) => BaseBloc<BookList, BookListRepository>(
+                repository: context.read<BookListRepository>(), type: ModalType.bookList)
               ..add(const StartedEvent()),
           )
         ],

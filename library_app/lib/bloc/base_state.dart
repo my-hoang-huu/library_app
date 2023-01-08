@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:library_app/data/models/base_modal.dart';
 
-enum ModalType { book, owner, reader, bookDetails }
+enum ModalType { book, owner, reader, bookDetails, bookList }
 
 enum ResponseMessageType { successDialog, informationDialog }
 

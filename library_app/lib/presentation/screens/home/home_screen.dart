@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
+import 'package:library_app/data/models/list_book.dart';
 import 'package:library_app/data/repository/base_repository.dart';
 import 'package:library_app/presentation/screens/page_layout.dart';
 
@@ -16,9 +17,9 @@ class HomeScreen extends MainPageLayout {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends MainPageLayoutState<HomeScreen, Book, BookRepository> {
+class _HomeScreenState extends MainPageLayoutState<HomeScreen, BookList, BookListRepository> {
   @override
-  Widget pageContent(BuildContext context, Book info) {
+  Widget pageContent(BuildContext context, BookList info) {
     print([" book reponse homepage", info]);
     return Body();
   }
@@ -33,5 +34,5 @@ class _HomeScreenState extends MainPageLayoutState<HomeScreen, Book, BookReposit
   bool get hasAppbar => false;
 
   @override
-  ModalType get screenType => ModalType.book;
+  ModalType get screenType => ModalType.bookList;
 }

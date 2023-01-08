@@ -20,11 +20,11 @@ class BaseService {
 
   final String apiUrl = DataConst.sourceUrl;
 
-  Future<Map<String, dynamic>> fetchInfo(String path) async {
+  Future fetchInfo(String path) async {
+    Response res = await _get(path);
     try {
-      Response res = await _get(path);
       if (res.statusCode == 200) {
-        Map<String, dynamic> bodyRes = jsonDecode(res.body);
+        final bodyRes = jsonDecode(res.body);
         return bodyRes;
       } else {
         throw Exception(res.body);
