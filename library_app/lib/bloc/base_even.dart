@@ -22,11 +22,3 @@ class SubmittedEvent<M extends BaseModal> extends BaseEvent {
   @override
   List<Object?> get props => [info];
 }
-
-class SubmittedBookEvent extends BaseEvent {
-  final Book book;
-
-  const SubmittedBookEvent(this.book);
-  @override
-  List<Object?> get props => [book];
-}

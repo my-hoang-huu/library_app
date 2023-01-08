@@ -81,7 +81,7 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
           name: _titleController.text,
           description: _desController.text,
           pageCount: int.tryParse(_pageCountController.text));
-      context.read<BaseListBloc<Book, BookListRepository>>().add(SubmittedBookEvent(newBook));
+      context.read<BaseListBloc<Book, BookListRepository>>().add(SubmittedEvent(newBook));
     } else {}
   }
 }

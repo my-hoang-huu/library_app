@@ -22,9 +22,21 @@ abstract class BaseListRepository<T extends BaseModal> {
 
   Future<bool?> createNew(T modal);
 
-  Future<bool?> updateInfo(T modal);
+  Future<List<T>> updateInfo(T modal);
 
   Future<bool?> delete(T modal);
+
+  void replace(T modal) {
+    if (_info == null) {
+      return;
+    }
+    for (var i = 0; i < _info!.length; i++) {
+      if (_info![i].id == modal.id) {
+        _info![i] = modal;
+        return;
+      }
+    }
+  }
 }
 
 class BookListRepository extends BaseListRepository<Book> {
@@ -51,6 +63,19 @@ class BookListRepository extends BaseListRepository<Book> {
   }
 
   @override
+  Future<List<Book>> updateInfo(Book modal) async {
+    final isSuccess =
+        await _service.updateInfo('/book-management/book/${modal.id}', updateMap: modal.toMap());
+    if (kDebugMode) {
+      print(["base_repository: ", isSuccess]);
+    }
+    if (isSuccess) {
+      replace(modal);
+    }
+    return _info!;
+  }
+
+  @override
   Future<bool?> createNew(Book modal) async {
     // final result =
     //     await _service.createNewInfo('/book-management/book/${modal.id}', updateMap: modal.toMap());
@@ -65,16 +90,6 @@ class BookListRepository extends BaseListRepository<Book> {
   Future<bool?> delete(Book modal) async {
     // final mapData =
     //     await _service.deleteInfo('/book-management/book/${modal.id}', id: modal.id.toString());
-    // if (kDebugMode) {
-    //   print(["base_repository: ", mapData]);
-    // }
-    return true;
-  }
-
-  @override
-  Future<bool?> updateInfo(Book modal) async {
-    // final mapData =
-    //     await _service.updateInfo('/book-management/book/${modal.id}', updateMap: modal.toMap());
     // if (kDebugMode) {
     //   print(["base_repository: ", mapData]);
     // }

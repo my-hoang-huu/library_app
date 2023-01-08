@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'base_modal.dart';
 
 class Book extends BaseModal {
-  final int id;
   final String name;
   final int? pageCount;
   final String description;
@@ -15,7 +14,7 @@ class Book extends BaseModal {
   final String? author;
 
   Book({
-    required this.id,
+    required super.id,
     required this.name,
     this.pageCount,
     required this.description,

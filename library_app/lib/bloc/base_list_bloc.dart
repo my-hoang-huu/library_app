@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
+import 'package:library_app/data/models/book.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
 
 class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
@@ -45,12 +46,10 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
     emit(SendingState(type));
     try {
       final result = await repository.updateInfo(updateInfo);
-      if (result == true) {
-        emit(SubmitSuccessState(type,
-            newInfo: updateInfo, successMessage: successMessage, preventRebuild: true));
-      }
+      emit(SubmitListSuccessState(type,
+          newInfo: result, successMessage: successMessage, preventRebuild: true));
     } catch (e) {
-      emit(ErrorState(type));
+      emit(ErrorState(type, error: e.toString()));
     }
   }
 }
