@@ -21,10 +21,31 @@ class SendingState extends BaseState {
   const SendingState(super.type);
 }
 
+class ErrorState extends BaseState {
+  final String? error;
+
+  const ErrorState(super.type, {this.error});
+
+  @override
+  List<Object?> get props => [error, type];
+}
+
 class LoadedState<M extends BaseModal> extends BaseState {
   final M info;
 
   const LoadedState(
+    super.type, {
+    required this.info,
+  });
+
+  @override
+  List<Object> get props => [info, type];
+}
+
+class LoadedListState<M extends BaseModal> extends BaseState {
+  final List<M> info;
+
+  const LoadedListState(
     super.type, {
     required this.info,
   });
@@ -55,11 +76,24 @@ class SubmitSuccessState<M extends BaseModal> extends BaseState {
   List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
 }
 
-class ErrorState extends BaseState {
-  final String? error;
+class SubmitListSuccessState<M extends BaseModal> extends BaseState {
+  final List<M> newInfo;
+  final String? successMessage;
+  final String? dialogMessage;
+  final String? dialogTitle;
+  final ResponseMessageType messageType;
+  final bool preventRebuild;
 
-  const ErrorState(super.type, {this.error});
+  const SubmitListSuccessState(
+    super.type, {
+    required this.newInfo,
+    this.successMessage,
+    this.dialogTitle,
+    this.dialogMessage,
+    this.messageType = ResponseMessageType.successDialog,
+    this.preventRebuild = false,
+  });
 
   @override
-  List<Object?> get props => [error, type];
+  List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
 }

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (context) => BookRepository(),
+          create: (context) => BookListRepository(),
         ),
         RepositoryProvider(
           create: (context) => BookListRepository(),
@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => BaseBloc<Book, BookRepository>(
-                repository: context.read<BookRepository>(), type: ModalType.book)
+            create: (context) => BaseListBloc<Book, BookListRepository>(
+                repository: context.read<BookListRepository>(), type: ModalType.book)
               ..add(const StartedEvent()),
           ),
           BlocProvider(
-            create: (context) => BaseBloc<BookList, BookListRepository>(
+            create: (context) => BaseListBloc<Book, BookListRepository>(
                 repository: context.read<BookListRepository>(), type: ModalType.bookList)
               ..add(const StartedEvent()),
           )

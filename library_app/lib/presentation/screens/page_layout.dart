@@ -16,7 +16,7 @@ abstract class MainPageLayout extends StatefulWidget {
 }
 
 abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal,
-    R extends BaseRepository<M>> extends State<T> {
+    R extends BaseListRepository<M>> extends State<T> {
   EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 
   bool buildWhen(BaseState previous, BaseState current) =>
@@ -40,7 +40,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
                 getTitle,
               ),
               automaticallyImplyLeading: false),
-      body: BlocConsumer<BaseBloc<M, R>, BaseState>(
+      body: BlocConsumer<BaseListBloc<M, R>, BaseState>(
         buildWhen: buildWhen,
         listenWhen: _listenWhen,
         listener: (context, state) {},
@@ -49,10 +49,10 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           if (state is LoadingState) {
             return const Center(child: CupertinoActivityIndicator());
           }
-          if (state is LoadedState<M>) {
+          if (state is LoadedListState<M>) {
             return pageContent(context, state.info);
           }
-          if (state is SubmitSuccessState<M>) {
+          if (state is SubmitListSuccessState<M>) {
             return pageContent(context, state.newInfo);
           }
           if (state is ErrorState) {
@@ -67,7 +67,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
 
   Color? get backgroundColor => null;
 
-  Widget pageContent(BuildContext context, M info);
+  Widget pageContent(BuildContext context, List<M> info);
 
   String get getTitle;
 

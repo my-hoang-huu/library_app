@@ -6,21 +6,21 @@ import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
 
-class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
+class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
     extends Bloc<BaseEvent, BaseState> {
   final R repository;
   final ModalType type;
 
-  BaseBloc({required this.repository, required this.type}) : super(LoadingState(type)) {
+  BaseListBloc({required this.repository, required this.type}) : super(LoadingState(type)) {
     on<StartedEvent>(_onStarting);
     on<SubmittedEvent<M>>(_inSubmiting);
   }
 
   Future<FutureOr<void>> _onStarting(StartedEvent event, Emitter<BaseState> emit) async {
     emit(LoadingState(type));
-    final M? profile = await repository.info;
+    final List<M>? profile = await repository.info;
     if (profile != null) {
-      emit(LoadedState(type, info: profile));
+      emit(LoadedListState(type, info: profile));
     } else {
       emit(ErrorState(type, error: "Có lỗi khi load dữ liệu"));
     }
