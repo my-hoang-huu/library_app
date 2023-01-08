@@ -12,16 +12,21 @@ books_schema = BookSchema(many=True)
 
 def add_book_service():
     data = request.json
-    if (data and ('name' in data) and ('page_count' in data)
-            and ('author_id' in data) and ('category_id' in data)):
+    if (data and ('name' in data)):
+        name = data['name']
         image = None
         description = None
-        name = data['name']
-        page_count = data['page_count']
-        author_id = data['author_id']
-        category_id = data['category_id']
+        author_id = None
+        category_id = None
+        page_count = None
         if ('image' in data):
             image = data['image']
+        if ('page_count' in data):
+            page_count = data['page_count'] 
+        if ('author_id' in data):
+            author_id = data['author_id']
+        if ('category_id' in data):
+            category_id = data['category_id']
         if ('description' in data):
             description = data['description']
         try:
