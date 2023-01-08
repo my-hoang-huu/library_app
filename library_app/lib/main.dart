@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:library_app/bloc/base_even.dart';
 import 'package:library_app/routes.dart';
 import 'package:library_app/theme_size/theme.dart';
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => BaseBloc<Book, BookRepository>(
-                repository: context.read<BookRepository>(), type: ModalType.book),
+                repository: context.read<BookRepository>(), type: ModalType.book)
+              ..add(const StartedEvent()),
           )
         ],
         child: MaterialApp(

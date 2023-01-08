@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/bloc/base_bloc.dart';
@@ -44,7 +45,20 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
         listenWhen: _listenWhen,
         listener: (context, state) {},
         builder: (context, state) {
-          return pageContent();
+          print(["bloc state", state]);
+          if (state is LoadingState) {
+            return const Center(child: CupertinoActivityIndicator());
+          }
+          if (state is LoadedState<M>) {
+            return pageContent(context, state.info);
+          }
+          if (state is SubmitSuccessState<M>) {
+            return pageContent(context, state.newInfo);
+          }
+          if (state is ErrorState) {
+            return Center(child: Text(" Error happened ${state.error.toString()}"));
+          }
+          return Center(child: CupertinoActivityIndicator());
         },
       ),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: getTab),
@@ -53,7 +67,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
 
   Color? get backgroundColor => null;
 
-  Widget pageContent();
+  Widget pageContent(BuildContext context, M info);
 
   String get getTitle;
 

@@ -12,7 +12,7 @@ final demoBooks = List.generate(
         image: "assets/images/book01.png",
         name: "name",
         price: 2,
-        pageCount: true,
+        pageCount: 200,
         isPopular: true,
         author: "My"));
 

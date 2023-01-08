@@ -22,15 +22,15 @@ class SendingState extends BaseState {
 }
 
 class LoadedState<M extends BaseModal> extends BaseState {
-  final M profileDetail;
+  final M info;
 
   const LoadedState(
     super.type, {
-    required this.profileDetail,
+    required this.info,
   });
 
   @override
-  List<Object> get props => [profileDetail, type];
+  List<Object> get props => [info, type];
 }
 
 class SubmitSuccessState<M extends BaseModal> extends BaseState {

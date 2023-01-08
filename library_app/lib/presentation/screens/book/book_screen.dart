@@ -21,7 +21,7 @@ class BookScreen extends MainPageLayout {
 
 class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookRepository> {
   @override
-  ListView pageContent() {
+  ListView pageContent(BuildContext context, Book info) {
     return ListView.builder(
       padding: getPagePadding,
       itemCount: _books.length,

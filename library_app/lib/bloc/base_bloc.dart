@@ -17,16 +17,16 @@ class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
   }
 
   Future<FutureOr<void>> _onStarting(StartedEvent event, Emitter<BaseState> emit) async {
-    emit(LoadingState(event.type));
+    emit(LoadingState(type));
     try {
       final M? profile = await repository.info;
       if (profile != null) {
-        emit(LoadedState(type, profileDetail: profile));
+        emit(LoadedState(type, info: profile));
       } else {
         emit(ErrorState(type, error: "Có lỗi khi load dữ liệu"));
       }
     } catch (e) {
-      emit(ErrorState(event.type, error: e.toString()));
+      emit(ErrorState(type, error: e.toString()));
     }
   }
 

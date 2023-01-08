@@ -30,7 +30,7 @@ abstract class BaseRepository<T extends BaseModal> {
 class BookRepository extends BaseRepository<Book> {
   @override
   Future<Book> _fetchData() async {
-    final Map<String, dynamic> mapData = await _service.fetchInfo('/book-management/book');
+    final Map<String, dynamic> mapData = await _service.fetchInfo('/book-management/books');
     if (kDebugMode) {
       print(["base_repository: ", mapData]);
     }

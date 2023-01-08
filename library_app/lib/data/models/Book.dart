@@ -5,7 +5,7 @@ import 'base_modal.dart';
 class Book extends BaseModal {
   final int id;
   final String name;
-  final bool? pageCount;
+  final int? pageCount;
   final String description;
   final String image;
   final double? rating;
@@ -30,7 +30,7 @@ class Book extends BaseModal {
   Book copyWith({
     int? id,
     String? name,
-    bool? pageCount,
+    int? pageCount,
     String? description,
     String? image,
     double? rating,
@@ -57,7 +57,7 @@ class Book extends BaseModal {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'pageCount': pageCount,
+      'page_count': pageCount,
       'description': description,
       'image': image,
       'rating': rating,
@@ -72,7 +72,7 @@ class Book extends BaseModal {
     return Book(
       id: map['id'] as int,
       name: map['name'] as String,
-      pageCount: map['pageCount'] != null ? map['pageCount'] as bool : null,
+      pageCount: map['page_count'] != null ? map['page_count'] as int : null,
       description: map['description'],
       image: map['image'],
       rating: map['rating'] != null ? map['rating'] as double : null,

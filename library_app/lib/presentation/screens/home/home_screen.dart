@@ -18,7 +18,8 @@ class HomeScreen extends MainPageLayout {
 
 class _HomeScreenState extends MainPageLayoutState<HomeScreen, Book, BookRepository> {
   @override
-  Widget pageContent() {
+  Widget pageContent(BuildContext context, Book info) {
+    print([" book reponse homepage", info]);
     return Body();
   }
 

@@ -12,9 +12,7 @@ abstract class BaseEvent extends Equatable {
 }
 
 class StartedEvent extends BaseEvent {
-  final ModalType type;
-
-  const StartedEvent(this.type);
+  const StartedEvent();
 }
 
 class SubmittedEvent<M extends BaseModal> extends BaseEvent {

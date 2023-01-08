@@ -21,13 +21,16 @@ class BaseService {
   final String apiUrl = DataConst.sourceUrl;
 
   Future<Map<String, dynamic>> fetchInfo(String path) async {
-    Response res = await get(DataConst.getUrl(path), headers: _headers);
-
-    if (res.statusCode == 200) {
-      Map<String, dynamic> bodyRes = jsonDecode(res.body);
-      return bodyRes;
-    } else {
-      throw Exception("Load information fails");
+    try {
+      Response res = await _get(path);
+      if (res.statusCode == 200) {
+        Map<String, dynamic> bodyRes = jsonDecode(res.body);
+        return bodyRes;
+      } else {
+        throw Exception(res.body);
+      }
+    } catch (e) {
+      throw e;
     }
   }
 
@@ -35,7 +38,7 @@ class BaseService {
       {required Map<String, dynamic> updateMap}) async {
     final String bodyRequest = jsonEncode(updateMap);
 
-    Response res = await post(DataConst.getUrl(path), body: bodyRequest);
+    Response res = await _post(path, bodyRequest);
 
     if (res.statusCode == 200) {
       Map<String, dynamic> bodyResponse = jsonDecode(res.body);
@@ -49,7 +52,7 @@ class BaseService {
       {required Map<String, dynamic> updateMap}) async {
     final String bodyRequest = jsonEncode(updateMap);
 
-    Response res = await put(DataConst.getUrl(path), body: bodyRequest);
+    Response res = await _put(path, bodyRequest);
 
     if (res.statusCode == 200) {
       Map<String, dynamic> bodyResponse = jsonDecode(res.body);
@@ -60,7 +63,7 @@ class BaseService {
   }
 
   Future<Map<String, dynamic>> deleteInfo(String path, {required String id}) async {
-    Response res = await delete(DataConst.getUrl(path), body: id);
+    Response res = await _delete(path, id);
 
     if (res.statusCode == 200) {
       Map<String, dynamic> bodyResponse = jsonDecode(res.body);
@@ -69,4 +72,17 @@ class BaseService {
       throw Exception("Delete request fails");
     }
   }
+
+  Duration get _requestTimeout => const Duration(seconds: 4);
+  Future<Response> _get(String path) {
+    print(["service", DataConst.getUrl(path)]);
+    return get(DataConst.getUrl(path));
+  }
+
+  Future<Response> _post(String path, String bodyRequest) async =>
+      await post(DataConst.getUrl(path), body: bodyRequest).timeout(_requestTimeout);
+  Future<Response> _put(String path, String bodyRequest) =>
+      put(DataConst.getUrl(path), body: bodyRequest).timeout(_requestTimeout);
+  Future<Response> _delete(String path, String id) =>
+      delete(DataConst.getUrl(path), body: id).timeout(_requestTimeout);
 }
