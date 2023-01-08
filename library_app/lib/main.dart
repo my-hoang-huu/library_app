@@ -5,7 +5,7 @@ import 'package:library_app/theme_size/theme.dart';
 
 import 'bloc/base_bloc.dart';
 import 'bloc/base_state.dart';
-import 'data/models/Book.dart';
+import 'data/models/book.dart';
 import 'data/repository/base_repository.dart';
 import 'presentation/screens/sign_in/sign_in_screen.dart';
 

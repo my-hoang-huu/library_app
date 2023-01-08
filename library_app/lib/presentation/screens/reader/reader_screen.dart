@@ -11,7 +11,7 @@ class ReaderScreen extends StatelessWidget {
       //   title: Text("Reader"),
       // ),
       body: Container(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.reader),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MainMenu.reader),
     );
   }
 }

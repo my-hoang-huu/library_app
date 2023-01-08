@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:library_app/data/models/Book.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/service/service.dart';
+
+import '../models/book.dart';
 
 abstract class BaseRepository<T extends BaseModal> {
   T? _info;

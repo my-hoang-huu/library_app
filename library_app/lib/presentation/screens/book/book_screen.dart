@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/const_enum/enums.dart';
-import 'package:library_app/data/models/book.dart';
-import 'package:library_app/presentation/screens/book/book_card.dart';
-import 'package:library_app/presentation/screens/home/components/popular_book.dart';
-import 'package:library_app/presentation/screens/page_layout.dart';
+
+import '../../../data/models/book.dart';
+import '../../../data/repository/base_repository.dart';
+import '../home/components/popular_book.dart';
+import '../page_layout.dart';
+import 'book_card.dart';
 
 List<Book> _books = demoBooks;
 
@@ -16,7 +18,7 @@ class BookScreen extends MainPageLayout {
   _BookScreenState createState() => _BookScreenState();
 }
 
-class _BookScreenState extends MainPageLayoutState<BookScreen> {
+class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookRepository> {
   @override
   ListView pageContent() {
     return ListView.builder(
@@ -32,7 +34,7 @@ class _BookScreenState extends MainPageLayoutState<BookScreen> {
   }
 
   @override
-  MenuState get getTab => MenuState.book;
+  MainMenu get getTab => MainMenu.book;
 
   @override
   String get getTitle => "Book";

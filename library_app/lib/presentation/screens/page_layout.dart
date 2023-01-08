@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:library_app/bloc/base_bloc.dart';
+import 'package:library_app/bloc/base_state.dart';
+import 'package:library_app/data/models/base_modal.dart';
+import 'package:library_app/data/repository/base_repository.dart';
 import 'package:library_app/presentation/components/custom_bottom_nav_bar.dart';
 import 'package:library_app/const_enum/enums.dart';
 
@@ -9,7 +14,8 @@ abstract class MainPageLayout extends StatefulWidget {
   MainPageLayoutState createState();
 }
 
-abstract class MainPageLayoutState<T extends MainPageLayout> extends State<T> {
+abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal,
+    R extends BaseRepository<M>> extends State<T> {
   EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 
   @override
@@ -26,7 +32,12 @@ abstract class MainPageLayoutState<T extends MainPageLayout> extends State<T> {
                 getTitle,
               ),
               automaticallyImplyLeading: false),
-      body: pageContent(),
+      body: BlocConsumer<BaseBloc<M, R>, BaseState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return pageContent();
+        },
+      ),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: getTab),
     );
   }
@@ -37,7 +48,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout> extends State<T> {
 
   String get getTitle;
 
-  MenuState get getTab;
+  MainMenu get getTab;
 
   bool get hasAppbar;
 }

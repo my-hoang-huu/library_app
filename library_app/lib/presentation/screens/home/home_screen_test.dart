@@ -64,7 +64,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
           Text(result),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MainMenu.home),
     );
   }
 

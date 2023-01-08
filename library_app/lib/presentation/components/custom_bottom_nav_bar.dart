@@ -15,7 +15,7 @@ class CustomBottomNavBar extends StatelessWidget {
     required this.selectedMenu,
   }) : super(key: key);
 
-  final MenuState selectedMenu;
+  final MainMenu selectedMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -44,26 +44,26 @@ class CustomBottomNavBar extends StatelessWidget {
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu ? kPrimaryColor : inActiveIconColor,
+                  color: MainMenu.home == selectedMenu ? kPrimaryColor : inActiveIconColor,
                 ),
                 onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
               ),
               IconButton(
                 iconSize: 26,
                 icon: Icon(CupertinoIcons.book,
-                    color: MenuState.book == selectedMenu ? kPrimaryColor : inActiveIconColor),
+                    color: MainMenu.book == selectedMenu ? kPrimaryColor : inActiveIconColor),
                 onPressed: () => Navigator.pushNamed(context, BookScreen.routeName),
               ),
               IconButton(
                 iconSize: 38,
                 icon: Icon(CupertinoIcons.group,
-                    color: MenuState.reader == selectedMenu ? kPrimaryColor : inActiveIconColor),
+                    color: MainMenu.reader == selectedMenu ? kPrimaryColor : inActiveIconColor),
                 onPressed: () => Navigator.pushNamed(context, ReaderScreen.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/User Icon.svg",
-                  color: MenuState.profile == selectedMenu ? kPrimaryColor : inActiveIconColor,
+                  color: MainMenu.profile == selectedMenu ? kPrimaryColor : inActiveIconColor,
                 ),
                 onPressed: () => Navigator.pushNamed(context, ProfileScreen.routeName),
               ),
