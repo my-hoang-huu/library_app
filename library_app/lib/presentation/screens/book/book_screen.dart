@@ -10,6 +10,7 @@ import 'book_card.dart';
 final _books = List.generate(
     3,
     (index) => Book(
+        description: "",
         id: index,
         image: "assets/images/book01.png",
         name: "name",
