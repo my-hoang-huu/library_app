@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/models/book.dart';
 import 'package:library_app/presentation/screens/book/book_card.dart';
 import 'package:library_app/presentation/screens/home/components/popular_book.dart';
@@ -29,4 +30,16 @@ class _BookScreenState extends MainPageLayoutState<BookScreen> {
       },
     );
   }
+
+  @override
+  MenuState get getTab => MenuState.book;
+
+  @override
+  String get getTitle => "Book";
+
+  @override
+  bool get hasAppbar => true;
+
+  @override
+  Color? get backgroundColor => Colors.grey.shade100;
 }

@@ -15,23 +15,29 @@ abstract class MainPageLayoutState<T extends MainPageLayout> extends State<T> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-          foregroundColor: Colors.black,
-          backgroundColor: Theme.of(context).canvasColor,
-          centerTitle: true,
-          title: Text(
-            getTitle,
-          ),
-          automaticallyImplyLeading: false),
+      backgroundColor: backgroundColor,
+      appBar: !hasAppbar
+          ? null
+          : AppBar(
+              foregroundColor: Colors.black,
+              backgroundColor: Theme.of(context).canvasColor,
+              centerTitle: true,
+              title: Text(
+                getTitle,
+              ),
+              automaticallyImplyLeading: false),
       body: pageContent(),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: getTab),
     );
   }
 
-  ListView pageContent();
+  Color? get backgroundColor => null;
 
-  String get getTitle => "Book";
+  Widget pageContent();
 
-  MenuState get getTab => MenuState.book;
+  String get getTitle;
+
+  MenuState get getTab;
+
+  bool get hasAppbar;
 }
