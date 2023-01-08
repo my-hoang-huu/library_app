@@ -4,11 +4,19 @@ import 'package:library_app/const_enum/enums.dart';
 
 import '../../../data/models/book.dart';
 import '../../../data/repository/base_repository.dart';
-import '../home/components/popular_book.dart';
 import '../page_layout.dart';
 import 'book_card.dart';
 
-List<Book> _books = demoBooks;
+final _books = List.generate(
+    3,
+    (index) => Book(
+        id: index,
+        image: "assets/images/book01.png",
+        name: "name",
+        price: 2,
+        pageCount: 200,
+        isPopular: true,
+        author: "My"));
 
 class BookScreen extends MainPageLayout {
   static String routeName = "/book";

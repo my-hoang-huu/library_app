@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/bloc/base_bloc.dart';
 import 'package:library_app/bloc/base_state.dart';
+import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/repository/base_repository.dart';
 import 'package:library_app/presentation/components/custom_bottom_nav_bar.dart';
-import 'package:library_app/const_enum/enums.dart';
 
 abstract class MainPageLayout extends StatefulWidget {
   const MainPageLayout({super.key});
@@ -19,7 +19,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
     R extends BaseRepository<M>> extends State<T> {
   EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 
-  bool _buildWhen(BaseState previous, BaseState current) =>
+  bool buildWhen(BaseState previous, BaseState current) =>
       current.type == screenType &&
       current is! SendingState &&
       !(current is SubmitSuccessState && current.preventRebuild);
@@ -41,7 +41,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
               ),
               automaticallyImplyLeading: false),
       body: BlocConsumer<BaseBloc<M, R>, BaseState>(
-        buildWhen: _buildWhen,
+        buildWhen: buildWhen,
         listenWhen: _listenWhen,
         listener: (context, state) {},
         builder: (context, state) {

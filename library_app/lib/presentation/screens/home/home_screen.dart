@@ -21,7 +21,7 @@ class _HomeScreenState extends MainPageLayoutState<HomeScreen, BookList, BookLis
   @override
   Widget pageContent(BuildContext context, BookList info) {
     print([" book reponse homepage", info]);
-    return Body();
+    return Body(info: info);
   }
 
   @override

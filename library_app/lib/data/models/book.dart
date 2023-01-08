@@ -73,6 +73,8 @@ class Book extends BaseModal {
       id: map['id'] as int,
       name: map['name'] as String,
       pageCount: map['page_count'] != null ? map['page_count'] as int : null,
+      // description: map['description'] ?? "",
+      // image: map['image'] ?? "",
       rating: map['rating'] != null ? map['rating'] as double : null,
       price: map['price'] != null ? map['price'] as double : null,
       isFavourite: map['isFavourite'] != null ? map['isFavourite'] as bool : null,
