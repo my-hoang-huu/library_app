@@ -26,7 +26,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
       current is! SendingState &&
       !(current is SubmitSuccessState && current.preventRebuild);
 
-  bool _listenWhen(BaseState previous, BaseState current) => current.type == screenType;
+  bool listenWhen(BaseState previous, BaseState current) => current.type == screenType;
 
   bool _isLoaderDialogDisplaying = false;
 
@@ -34,19 +34,20 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: !hasAppbar
-          ? null
-          : AppBar(
-              foregroundColor: Colors.black,
-              backgroundColor: Theme.of(context).canvasColor,
-              centerTitle: true,
-              title: Text(
-                getTitle,
-              ),
-              automaticallyImplyLeading: false),
+      appBar: appBar ??
+          (!hasAppbar
+              ? null
+              : AppBar(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Theme.of(context).canvasColor,
+                  centerTitle: true,
+                  title: Text(
+                    getTitle,
+                  ),
+                  automaticallyImplyLeading: false)),
       body: BlocConsumer<BaseListBloc<M, R>, BaseState>(
         buildWhen: buildWhen,
-        listenWhen: _listenWhen,
+        listenWhen: listenWhen,
         listener: (context, state) {
           if (_isLoaderDialogDisplaying) _hideLoaderDialog(context);
           if (state is SendingState) {
@@ -78,7 +79,8 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           return Center(child: CupertinoActivityIndicator());
         },
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: getTab),
+      bottomNavigationBar:
+          !hasBottomNavigationBar ? null : CustomBottomNavBar(selectedMenu: getTab),
     );
   }
 
@@ -92,7 +94,11 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
 
   bool get hasAppbar;
 
+  bool get hasBottomNavigationBar;
+
   ModalType get screenType;
+
+  PreferredSizeWidget? get appBar => null;
 
   void _hideLoaderDialog(BuildContext context) {
     Navigator.pop(context);

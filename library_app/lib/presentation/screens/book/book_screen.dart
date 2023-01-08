@@ -57,4 +57,7 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
 
   @override
   ModalType get screenType => ModalType.book;
+
+  @override
+  bool get hasBottomNavigationBar => true;
 }
