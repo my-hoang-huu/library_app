@@ -7,6 +7,8 @@ import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
 import 'package:library_app/presentation/components/custom_bottom_nav_bar.dart';
+import 'package:library_app/widget/loader_dialog.dart';
+import 'package:library_app/widget/success_dialog.dart';
 
 abstract class MainPageLayout extends StatefulWidget {
   const MainPageLayout({super.key});
@@ -26,6 +28,8 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
 
   bool _listenWhen(BaseState previous, BaseState current) => current.type == screenType;
 
+  bool _isLoaderDialogDisplaying = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +47,20 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
       body: BlocConsumer<BaseListBloc<M, R>, BaseState>(
         buildWhen: buildWhen,
         listenWhen: _listenWhen,
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (_isLoaderDialogDisplaying) _hideLoaderDialog(context);
+          if (state is SendingState) {
+            _isLoaderDialogDisplaying = true;
+            showLoaderDialog(context);
+          }
+          if (state is SubmitListSuccessState) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) =>
+                  SuccessDialog(message: state.successMessage ?? "Update successfully!"),
+            );
+          }
+        },
         builder: (context, state) {
           print(["bloc state", state]);
           if (state is LoadingState) {
@@ -76,4 +93,9 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
   bool get hasAppbar;
 
   ModalType get screenType;
+
+  void _hideLoaderDialog(BuildContext context) {
+    Navigator.pop(context);
+    _isLoaderDialogDisplaying = false;
+  }
 }

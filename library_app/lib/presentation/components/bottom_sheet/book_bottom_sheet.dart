@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:library_app/bloc/base_list_bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
-import 'package:library_app/data/models/list_book.dart';
+import 'package:library_app/bloc/base_list_bloc.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
+import 'package:library_app/helper/validator.dart';
 import 'package:library_app/presentation/components/text_form_field_custom.dart';
 
 import '../../../data/models/book.dart';
@@ -53,6 +53,7 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
       TextFormFieldCustom.text(
         hintText: "Title",
         controller: _titleController,
+        validators: [Validators.required()],
       ),
       mainSpace,
       TextFormFieldCustom.text(
@@ -74,7 +75,6 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
 
   @override
   void onSubmit(BuildContext context) {
-    print("text");
     if (_initBook != null) {
       final newBook = Book(
           id: _initBook!.id,
@@ -82,6 +82,7 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
           description: _desController.text,
           pageCount: int.tryParse(_pageCountController.text));
       context.read<BaseListBloc<Book, BookListRepository>>().add(SubmittedEvent(newBook));
-    } else {}
+    }
+    Navigator.pop(context);
   }
 }
