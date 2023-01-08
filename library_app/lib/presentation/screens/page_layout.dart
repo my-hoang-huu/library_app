@@ -40,6 +40,8 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
               ),
               automaticallyImplyLeading: false),
       body: BlocConsumer<BaseBloc<M, R>, BaseState>(
+        buildWhen: _buildWhen,
+        listenWhen: _listenWhen,
         listener: (context, state) {},
         builder: (context, state) {
           return pageContent();
