@@ -20,8 +20,11 @@ class BaseBloc<M extends BaseModal, R extends BaseRepository<M>>
     emit(LoadingState(event.type));
     try {
       final M? profile = await repository.info;
-      if (profile == null) throw Exception("profile response is empty");
-      emit(LoadedState(event.type, profileDetail: profile));
+      if (profile != null) {
+        emit(LoadedState(type, profileDetail: profile));
+      } else {
+        emit(ErrorState(type, error: "Có lỗi khi load dữ liệu"));
+      }
     } catch (e) {
       emit(ErrorState(event.type, error: e.toString()));
     }
