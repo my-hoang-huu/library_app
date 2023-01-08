@@ -11,7 +11,7 @@ class DefaultButton extends StatelessWidget {
     this.buttonColor,
   }) : super(key: key);
   final String text;
-  final Function? press;
+  final void Function()? press;
   final Color? buttonColor;
 
   @override

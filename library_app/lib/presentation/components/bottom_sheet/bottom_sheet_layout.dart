@@ -58,7 +58,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
                   const SizedBox(
                     height: 32,
                   ),
-                  DefaultButton(press: onSubmit(context), text: buttonTitle),
+                  DefaultButton(press: () => onSubmit(context), text: buttonTitle),
                 ],
               ),
             ),
@@ -71,7 +71,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
     );
   }
 
-  onSubmit(BuildContext context);
+  void onSubmit(BuildContext context);
 
   List<Widget> body(BuildContext context);
 
