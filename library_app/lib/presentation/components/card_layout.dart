@@ -14,17 +14,22 @@ abstract class CardLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      // color: const Color.fromARGB(255, 231, 253, 231),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: rowContent(),
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        // color: const Color.fromARGB(255, 231, 253, 231),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: rowContent(),
+          ),
         ),
       ),
     );
   }
+
+  void onTap();
 
   List<Widget> rowContent();
 

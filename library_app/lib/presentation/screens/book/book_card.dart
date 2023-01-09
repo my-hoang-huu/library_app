@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/data/models/book.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
+import 'package:library_app/presentation/screens/book_details/book_details_screen.dart';
 import 'package:library_app/theme_size/size_config.dart';
 
-class BookCardLine extends CardLayout {
+class BookCard extends CardLayout {
   final Book book;
-  const BookCardLine({
+  const BookCard({
     super.key,
     required super.context,
     required this.book,
@@ -51,5 +52,14 @@ class BookCardLine extends CardLayout {
       const SizedBox(width: 20),
       contents(context)
     ];
+  }
+
+  @override
+  void onTap() {
+    Navigator.pushNamed(
+      context,
+      BookDetailsScreen.routeName,
+      arguments: BookDetailsArguments(book: book),
+    );
   }
 }

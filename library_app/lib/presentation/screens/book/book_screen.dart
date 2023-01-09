@@ -23,7 +23,7 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
       padding: getPagePadding,
       itemCount: info.length,
       itemBuilder: (context, index) {
-        return BookCardLine(
+        return BookCard(
           context: context,
           book: info[index],
         );

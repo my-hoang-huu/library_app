@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/data/models/book.dart';
-import 'package:library_app/presentation/components/book_card.dart';
+import 'package:library_app/presentation/components/book_popular_card.dart';
 
 import '../../../../theme_size/size_config.dart';
 import 'section_title.dart';
@@ -26,7 +26,7 @@ class PopularBooks extends StatelessWidget {
               ...List.generate(
                 bookList.length,
                 (index) {
-                  return BookCardHomePage(book: bookList[index]);
+                  return BookPopularCard(book: bookList[index]);
                 },
               ),
               SizedBox(width: getProportionateScreenWidth(20)),

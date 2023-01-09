@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_app/data/models/book.dart';
-import 'package:library_app/data/service/service.dart';
 import 'package:library_app/presentation/screens/book_details/book_details_screen.dart';
 
 import '../../const_enum/constants.dart';
 import '../../theme_size/size_config.dart';
-
-import 'package:http/http.dart' as http;
 
 Map<String, String> requestHeaders = {
   'Content-type': 'application/json',
@@ -15,8 +12,8 @@ Map<String, String> requestHeaders = {
   'Authorization': 'Bearer sfie32831542543460'
 };
 
-class BookCardHomePage extends StatelessWidget {
-  const BookCardHomePage({
+class BookPopularCard extends StatelessWidget {
+  const BookPopularCard({
     Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,

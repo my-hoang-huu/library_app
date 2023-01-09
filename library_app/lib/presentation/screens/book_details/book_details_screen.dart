@@ -60,7 +60,6 @@ class _DetailsScreenState extends MainPageLayoutState<BookDetailsScreen, Book, B
 
   @override
   bool extraBuildCondition(BaseState previous, BaseState current) {
-    print([current.runtimeType, "||||||||||||||||||||||||||||||||"]);
     return current is! DeleteListItemSuccessState;
   }
 
