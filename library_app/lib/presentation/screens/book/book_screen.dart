@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
+import 'package:library_app/presentation/components/bottom_sheet/book_bottom_sheet.dart';
+import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
 
 import '../../../data/models/book.dart';
 import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
 import 'book_card.dart';
-
-final _books = List.generate(
-    3,
-    (index) => Book(
-        description: "",
-        id: index,
-        image: "assets/images/book01.png",
-        name: "name",
-        price: 2,
-        pageCount: 200,
-        isPopular: true,
-        author: "My"));
 
 class BookScreen extends MainPageLayout {
   static String routeName = "/book";
@@ -33,11 +23,11 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
   ListView pageContent(BuildContext context, List<Book> info) {
     return ListView.builder(
       padding: getPagePadding,
-      itemCount: _books.length,
+      itemCount: info.length,
       itemBuilder: (context, index) {
-        return BookCardLine(
+        return BookCard(
           context: context,
-          book: _books[index],
+          book: info[index],
         );
       },
     );
@@ -56,8 +46,18 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
   Color? get backgroundColor => Colors.grey.shade100;
 
   @override
-  ModalType get screenType => ModalType.book;
+  ModalType get screenType => ModalType.bookList;
 
   @override
   bool get hasBottomNavigationBar => true;
+
+  @override
+  void onCreate(BuildContext context) {
+    showCustomBottomSheet(
+        context: context,
+        bottomSheetWidget: const BookBottomSheet(
+          title: "Add book",
+          buttonTitle: "Add",
+        ));
+  }
 }

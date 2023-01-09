@@ -25,32 +25,23 @@ class BaseService {
     return _tryCatch(res);
   }
 
-  Future<Map<String, dynamic>?> createNewInfo(String path,
-      {required Map<String, dynamic> updateMap}) async {
-    final String bodyRequest = jsonEncode(updateMap);
+  Future<Map<String, dynamic>> createNewInfo(String path,
+      {required Map<String, dynamic> newMapInfo}) async {
+    final String bodyRequest = jsonEncode(newMapInfo);
 
     Response res = await _post(path, bodyRequest);
 
-    if (res.statusCode == 200) {
-      Map<String, dynamic> bodyResponse = jsonDecode(res.body);
-      return bodyResponse;
-    } else {
-      return null;
-    }
+    return _tryCatch(res);
   }
 
   Future<bool> updateInfo(String path, {required Map<String, dynamic> updateMap}) async {
     final String bodyRequest = jsonEncode(updateMap);
 
     Response res = await _put(path, bodyRequest);
-    try {
-      if (res.statusCode == 200) {
-        return true;
-      } else {
-        throw Exception(res.body);
-      }
-    } catch (e) {
-      throw e;
+    if (res.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception(res.body);
     }
   }
 

@@ -3,6 +3,9 @@ import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/models/book.dart';
 
 /// evens are sent by client to request something from server
+///
+///
+enum SubmitType { create, update }
 
 abstract class BaseEvent extends Equatable {
   const BaseEvent();
@@ -17,8 +20,9 @@ class StartedEvent extends BaseEvent {
 
 class SubmittedEvent<M extends BaseModal> extends BaseEvent {
   final M info;
+  final SubmitType submitType;
 
-  const SubmittedEvent(this.info);
+  const SubmittedEvent(this.info, {this.submitType = SubmitType.update});
   @override
   List<Object?> get props => [info];
 }

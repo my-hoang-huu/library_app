@@ -4,6 +4,7 @@ void showLoaderDialog(BuildContext context, {String? content}) {
   AlertDialog alert = AlertDialog(
     actionsAlignment: MainAxisAlignment.center,
     contentPadding: EdgeInsets.all(16),
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
     content: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [

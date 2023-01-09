@@ -46,19 +46,19 @@ class CustomBottomNavBar extends StatelessWidget {
                   "assets/icons/Shop Icon.svg",
                   color: MainMenu.home == selectedMenu ? kPrimaryColor : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(context, HomeScreen.routeName),
               ),
               IconButton(
                 iconSize: 26,
                 icon: Icon(CupertinoIcons.book,
                     color: MainMenu.book == selectedMenu ? kPrimaryColor : inActiveIconColor),
-                onPressed: () => Navigator.pushNamed(context, BookScreen.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(context, BookScreen.routeName),
               ),
               IconButton(
                 iconSize: 38,
                 icon: Icon(CupertinoIcons.group,
                     color: MainMenu.reader == selectedMenu ? kPrimaryColor : inActiveIconColor),
-                onPressed: () => Navigator.pushNamed(context, ReaderScreen.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(context, ReaderScreen.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
