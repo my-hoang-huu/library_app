@@ -54,17 +54,18 @@ abstract class BaseListRepository<T extends BaseModal> {
 class BookListRepository extends BaseListRepository<Book> {
   @override
   Future<List<Book>> _fetchData() async {
-    // return Future.value(List.generate(
-    //     3,
-    //     (index) => Book(
-    //         description: "",
-    //         id: index,
-    //         image: "assets/images/book01.png",
-    //         name: "test",
-    //         price: 2,
-    //         pageCount: 200,
-    //         isPopular: true,
-    //         author: "My")));
+    return Future.value(List.generate(
+        3,
+        (index) => Book(
+            description:
+                "A book description is a short summary of a book's story or content that is designed to “hook” a reader and lead to a sale. Typically, the book's description conveys important information about its topic or focus (in nonfiction) or the plot and tone (for a novel or any other piece of fiction",
+            id: index,
+            image: "assets/images/book01.png",
+            name: "test",
+            price: 2,
+            pageCount: 200,
+            isPopular: true,
+            author: "My")));
 
     ///real function
     final List mapData = await _service.fetchInfo('/book-management/books');

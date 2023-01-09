@@ -7,18 +7,6 @@ import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
 import 'book_card.dart';
 
-final _books = List.generate(
-    3,
-    (index) => Book(
-        description: "",
-        id: index,
-        image: "assets/images/book01.png",
-        name: "name",
-        price: 2,
-        pageCount: 200,
-        isPopular: true,
-        author: "My"));
-
 class BookScreen extends MainPageLayout {
   static String routeName = "/book";
 
@@ -33,11 +21,11 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
   ListView pageContent(BuildContext context, List<Book> info) {
     return ListView.builder(
       padding: getPagePadding,
-      itemCount: _books.length,
+      itemCount: info.length,
       itemBuilder: (context, index) {
         return BookCardLine(
           context: context,
-          book: _books[index],
+          book: info[index],
         );
       },
     );

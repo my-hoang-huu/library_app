@@ -15,26 +15,18 @@ abstract class CardLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 231, 253, 231),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      // color: const Color.fromARGB(255, 231, 253, 231),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(20),
         child: Row(
-          children: [
-            Container(
-              height: 80,
-              width: 60,
-              color: Colors.grey.shade400,
-            ),
-            const SizedBox(width: 20),
-            contents(context)
-          ],
+          children: rowContent(),
         ),
       ),
     );
   }
 
-  Column contents(BuildContext context);
+  List<Widget> rowContent();
 
   TextStyle? get cardTitleStyle => Theme.of(context).textTheme.titleMedium;
 }
