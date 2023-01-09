@@ -24,15 +24,27 @@ abstract class BaseListRepository<T extends BaseModal> {
 
   Future<List<T>> updateInfo(T modal);
 
-  Future<bool?> delete(T modal);
+  Future<List<T>> delete(int id);
 
-  void replace(T modal) {
+  void _replace(T modal) {
     if (_info == null) {
       return;
     }
     for (var i = 0; i < _info!.length; i++) {
       if (_info![i].id == modal.id) {
         _info![i] = modal;
+        return;
+      }
+    }
+  }
+
+  void _deleteItem(int id) {
+    if (_info == null) {
+      return;
+    }
+    for (var i = 0; i < _info!.length; i++) {
+      if (_info![i].id == id) {
+        _info!.removeAt(i);
         return;
       }
     }
@@ -70,7 +82,7 @@ class BookListRepository extends BaseListRepository<Book> {
       print(["base_repository: ", isSuccess]);
     }
     if (isSuccess) {
-      replace(modal);
+      _replace(modal);
     }
     return _info!;
   }
@@ -87,12 +99,11 @@ class BookListRepository extends BaseListRepository<Book> {
   }
 
   @override
-  Future<bool?> delete(Book modal) async {
-    // final mapData =
-    //     await _service.deleteInfo('/book-management/book/${modal.id}', id: modal.id.toString());
-    // if (kDebugMode) {
-    //   print(["base_repository: ", mapData]);
-    // }
-    return true;
+  Future<List<Book>> delete(int id) async {
+    final isSuccess = await _service.deleteInfo('/book-management/book/$id', id: id.toString());
+    if (isSuccess) {
+      _deleteItem(id);
+    }
+    return _info!;
   }
 }

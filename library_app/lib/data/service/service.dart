@@ -54,12 +54,11 @@ class BaseService {
     }
   }
 
-  Future<Map<String, dynamic>> deleteInfo(String path, {required String id}) async {
+  Future<bool> deleteInfo(String path, {required String id}) async {
     Response res = await _delete(path, id);
 
     if (res.statusCode == 200) {
-      Map<String, dynamic> bodyResponse = jsonDecode(res.body);
-      return bodyResponse;
+      return true;
     } else {
       throw Exception("Delete request fails");
     }
@@ -90,5 +89,6 @@ class BaseService {
   Future<Response> _put(String path, String bodyRequest) =>
       put(DataConst.getUrl(path), body: bodyRequest, headers: _headers).timeout(_requestTimeout);
   Future<Response> _delete(String path, String id) =>
-      delete(DataConst.getUrl(path), body: id).timeout(_requestTimeout);
+      delete(DataConst.getUrl(path), body: id, headers: _headers);
+  // delete(DataConst.getUrl(path), body: id, headers: _headers).timeout(_requestTimeout);
 }

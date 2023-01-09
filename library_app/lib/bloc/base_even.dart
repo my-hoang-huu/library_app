@@ -22,3 +22,8 @@ class SubmittedEvent<M extends BaseModal> extends BaseEvent {
   @override
   List<Object?> get props => [info];
 }
+
+class DeletedEvent extends BaseEvent {
+  final int id;
+  const DeletedEvent(this.id);
+}

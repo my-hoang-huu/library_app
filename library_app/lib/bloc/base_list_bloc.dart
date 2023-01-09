@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/data/models/base_modal.dart';
-import 'package:library_app/data/models/book.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
 
 class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
@@ -15,6 +14,7 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
   BaseListBloc({required this.repository, required this.type}) : super(LoadingState(type)) {
     on<StartedEvent>(_onStarting);
     on<SubmittedEvent<M>>(_inSubmiting);
+    on<DeletedEvent>(_onDeleteItem);
   }
 
   Future<FutureOr<void>> _onStarting(StartedEvent event, Emitter<BaseState> emit) async {
@@ -32,22 +32,32 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
 
   Future<FutureOr<void>> _inSubmiting(SubmittedEvent<M> event, Emitter<BaseState> emit) async {
     final M updateInfo = event.info;
-    return _handleSubmission(
-      updateInfo: updateInfo,
-      emit: emit,
-    );
+    return _handleSubmission(emit: emit, request: repository.updateInfo(updateInfo));
   }
 
-  Future<FutureOr<void>> _handleSubmission({
-    required M updateInfo,
-    required Emitter<BaseState> emit,
-    String? successMessage,
-  }) async {
+  Future<FutureOr<void>> _onDeleteItem(DeletedEvent event, Emitter<BaseState> emit) async {
+    return _handleSubmission(
+        emit: emit,
+        request: repository.delete(event.id),
+        isDelete: true,
+        successMessage: "Book deleted successfully");
+  }
+
+  Future<FutureOr<void>> _handleSubmission(
+      {required Emitter<BaseState> emit,
+      String? successMessage,
+      bool isDelete = false,
+      required Future<List<M>> request}) async {
     emit(SendingState(type));
     try {
-      final result = await repository.updateInfo(updateInfo);
-      emit(SubmitListSuccessState(type,
-          newInfo: result, successMessage: successMessage, preventRebuild: true));
+      final result = await request;
+      if (isDelete) {
+        emit(DeleteListItemSuccessState(type,
+            newInfo: result, successMessage: successMessage, preventRebuild: true));
+      } else {
+        emit(SubmitListSuccessState(type,
+            newInfo: result, successMessage: successMessage, preventRebuild: true));
+      }
     } catch (e) {
       emit(ErrorState(type, error: e.toString()));
     }

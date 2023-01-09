@@ -21,10 +21,14 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
     R extends BaseListRepository<M>> extends State<T> {
   EdgeInsets get getPagePadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 
-  bool buildWhen(BaseState previous, BaseState current) =>
-      current.type == screenType &&
-      current is! SendingState &&
-      !(current is SubmitSuccessState && current.preventRebuild);
+  bool buildWhen(BaseState previous, BaseState current) {
+    return extraBuildCondition(previous, current) &&
+        current.type == screenType &&
+        current is! SendingState &&
+        !(current is SubmitSuccessState && current.preventRebuild);
+  }
+
+  bool extraBuildCondition(BaseState previous, BaseState current) => true;
 
   bool listenWhen(BaseState previous, BaseState current) => current.type == screenType;
 
@@ -54,7 +58,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
             _isLoaderDialogDisplaying = true;
             showLoaderDialog(context);
           }
-          if (state is SubmitListSuccessState) {
+          if (state is ListSuccessBaseState) {
             showDialog(
               context: context,
               builder: (BuildContext context) =>
@@ -70,7 +74,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           if (state is LoadedListState<M>) {
             return pageContent(context, state.info);
           }
-          if (state is SubmitListSuccessState<M>) {
+          if (state is ListSuccessBaseState<M>) {
             return pageContent(context, state.newInfo);
           }
           if (state is ErrorState) {

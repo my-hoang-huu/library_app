@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:library_app/bloc/base_even.dart';
+import 'package:library_app/data/models/book.dart';
 import 'package:library_app/presentation/components/bottom_sheet/book_bottom_sheet.dart';
 import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
 import 'package:library_app/presentation/components/default_button.dart';
-import 'package:library_app/data/models/book.dart';
 import 'package:library_app/theme_size/size_config.dart';
 
-import 'color_dots.dart';
+import '../../../../bloc/base_list_bloc.dart';
+import '../../../../data/repository/base_list_repository.dart';
 import 'book_description.dart';
-import 'top_rounded_container.dart';
 import 'book_images.dart';
+import 'top_rounded_container.dart';
 
 class Body extends StatelessWidget {
   final Book book;
@@ -47,7 +50,12 @@ class Body extends StatelessWidget {
                             Expanded(
                               child: DefaultButton(
                                 text: "Delete Book",
-                                press: () {},
+                                press: () {
+                                  context
+                                      .read<BaseListBloc<Book, BookListRepository>>()
+                                      .add(DeletedEvent(book.id));
+                                  Navigator.of(context).pop();
+                                },
                                 buttonColor: Colors.red.shade700,
                               ),
                             ),

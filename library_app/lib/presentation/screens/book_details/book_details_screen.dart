@@ -59,6 +59,12 @@ class _DetailsScreenState extends MainPageLayoutState<BookDetailsScreen, Book, B
   bool listenWhen(BaseState previous, BaseState current) => false;
 
   @override
+  bool extraBuildCondition(BaseState previous, BaseState current) {
+    print([current.runtimeType, "||||||||||||||||||||||||||||||||"]);
+    return current is! DeleteListItemSuccessState;
+  }
+
+  @override
   bool get hasBottomNavigationBar => false;
 }
 

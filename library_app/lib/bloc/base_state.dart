@@ -76,7 +76,7 @@ class SubmitSuccessState<M extends BaseModal> extends BaseState {
   List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
 }
 
-class SubmitListSuccessState<M extends BaseModal> extends BaseState {
+abstract class ListSuccessBaseState<M extends BaseModal> extends BaseState {
   final List<M> newInfo;
   final String? successMessage;
   final String? dialogMessage;
@@ -84,7 +84,7 @@ class SubmitListSuccessState<M extends BaseModal> extends BaseState {
   final ResponseMessageType messageType;
   final bool preventRebuild;
 
-  const SubmitListSuccessState(
+  const ListSuccessBaseState(
     super.type, {
     required this.newInfo,
     this.successMessage,
@@ -92,6 +92,36 @@ class SubmitListSuccessState<M extends BaseModal> extends BaseState {
     this.dialogMessage,
     this.messageType = ResponseMessageType.successDialog,
     this.preventRebuild = false,
+  });
+
+  @override
+  List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
+}
+
+class SubmitListSuccessState<M extends BaseModal> extends ListSuccessBaseState<M> {
+  const SubmitListSuccessState(
+    super.type, {
+    required super.newInfo,
+    super.successMessage,
+    super.dialogTitle,
+    super.dialogMessage,
+    super.messageType = ResponseMessageType.successDialog,
+    super.preventRebuild = false,
+  });
+
+  @override
+  List<Object?> get props => [newInfo, type, successMessage, messageType, preventRebuild];
+}
+
+class DeleteListItemSuccessState<M extends BaseModal> extends ListSuccessBaseState<M> {
+  const DeleteListItemSuccessState(
+    super.type, {
+    required super.newInfo,
+    super.successMessage,
+    super.dialogTitle,
+    super.dialogMessage,
+    super.messageType = ResponseMessageType.successDialog,
+    super.preventRebuild = false,
   });
 
   @override
