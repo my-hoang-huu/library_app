@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_app/data/models/book.dart';
 import 'package:library_app/data/service/service.dart';
-import 'package:library_app/presentation/screens/details/details_screen.dart';
+import 'package:library_app/presentation/screens/book_details/book_details_screen.dart';
 
 import '../../const_enum/constants.dart';
 import '../../theme_size/size_config.dart';

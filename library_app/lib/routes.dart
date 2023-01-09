@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:library_app/presentation/screens/book/book_screen.dart';
 import 'package:library_app/presentation/screens/cart/cart_screen.dart';
 import 'package:library_app/presentation/screens/complete_profile/complete_profile_screen.dart';
-import 'package:library_app/presentation/screens/details/details_screen.dart';
+import 'package:library_app/presentation/screens/book_details/book_details_screen.dart';
 import 'package:library_app/presentation/screens/home/home_screen.dart';
 import 'package:library_app/presentation/screens/profile/profile_screen.dart';
 import 'presentation/screens/forgot_password/forgot_password_screen.dart';
