@@ -44,7 +44,7 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
   Color? get backgroundColor => Colors.grey.shade100;
 
   @override
-  ModalType get screenType => ModalType.book;
+  ModalType get screenType => ModalType.bookList;
 
   @override
   bool get hasBottomNavigationBar => true;
