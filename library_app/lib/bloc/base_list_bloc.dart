@@ -32,7 +32,10 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
 
   Future<FutureOr<void>> _inSubmiting(SubmittedEvent<M> event, Emitter<BaseState> emit) async {
     final M updateInfo = event.info;
-    return _handleSubmission(emit: emit, request: repository.updateInfo(updateInfo));
+    final function = event.submitType == SubmitType.update
+        ? repository.updateInfo(updateInfo)
+        : repository.createNew(updateInfo);
+    return _handleSubmission(emit: emit, request: function);
   }
 
   Future<FutureOr<void>> _onDeleteItem(DeletedEvent event, Emitter<BaseState> emit) async {

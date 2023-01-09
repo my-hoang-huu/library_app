@@ -33,7 +33,8 @@ def add_book_service():
             new_book = Books(name, page_count, author_id, category_id, image, description)
             db.session.add(new_book)
             db.session.commit()
-            return jsonify({"message": "Add success!"}), 200
+            db.session.refresh(new_book)
+            return book_schema.jsonify(new_book)
         except IndentationError:
             db.session.rollback()
             return jsonify({"message": "Can not add book!"}), 400

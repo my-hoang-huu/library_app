@@ -57,7 +57,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
                           Icons.add,
                         ),
                         color: kPrimaryColor,
-                        onPressed: onCreate,
+                        onPressed: () => onCreate(context),
                       ),
                     )
                   ],
@@ -101,7 +101,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
     );
   }
 
-  void onCreate() {}
+  void onCreate(BuildContext context) {}
 
   Color? get backgroundColor => null;
 

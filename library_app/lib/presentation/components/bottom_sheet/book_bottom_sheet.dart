@@ -83,14 +83,17 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
 
   @override
   void onSubmit(BuildContext context) {
-    if (_initBook != null) {
-      final newBook = Book(
-          id: _initBook!.id,
-          name: _titleController.text,
-          description: _desController.text,
-          pageCount: int.tryParse(_pageCountController.text));
-      context.read<BaseListBloc<Book, BookListRepository>>().add(SubmittedEvent(newBook));
-    }
+    var isUpdate = _initBook != null;
+
+    final newBook = Book(
+        id: isUpdate ? _initBook!.id : 0,
+        name: _titleController.text,
+        description: _desController.text,
+        pageCount: int.tryParse(_pageCountController.text));
+    context
+        .read<BaseListBloc<Book, BookListRepository>>()
+        .add(SubmittedEvent(newBook, submitType: isUpdate ? SubmitType.update : SubmitType.create));
+
     Navigator.pop(context);
   }
 }

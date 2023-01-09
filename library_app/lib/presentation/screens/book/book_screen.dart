@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
+import 'package:library_app/presentation/components/bottom_sheet/book_bottom_sheet.dart';
+import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
 
 import '../../../data/models/book.dart';
 import '../../../data/repository/base_list_repository.dart';
@@ -48,4 +50,14 @@ class _BookScreenState extends MainPageLayoutState<BookScreen, Book, BookListRep
 
   @override
   bool get hasBottomNavigationBar => true;
+
+  @override
+  void onCreate(BuildContext context) {
+    showCustomBottomSheet(
+        context: context,
+        bottomSheetWidget: const BookBottomSheet(
+          title: "Add book",
+          buttonTitle: "Add",
+        ));
+  }
 }
