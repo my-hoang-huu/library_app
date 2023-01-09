@@ -47,7 +47,9 @@ class BookCard extends CardLayout {
     return [
       SizedBox(
         height: 80,
-        child: Image.asset(book.image, alignment: Alignment.centerLeft),
+        child: Hero(
+            tag: book.id.toString(),
+            child: Image.asset(book.image, alignment: Alignment.centerLeft)),
       ),
       const SizedBox(width: 20),
       contents(context)
