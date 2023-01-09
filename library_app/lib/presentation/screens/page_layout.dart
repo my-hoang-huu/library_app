@@ -57,7 +57,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
                           Icons.add,
                         ),
                         color: kPrimaryColor,
-                        onPressed: () {},
+                        onPressed: onCreate,
                       ),
                     )
                   ],
@@ -100,6 +100,8 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           !hasBottomNavigationBar ? null : CustomBottomNavBar(selectedMenu: getTab),
     );
   }
+
+  void onCreate() {}
 
   Color? get backgroundColor => null;
 
