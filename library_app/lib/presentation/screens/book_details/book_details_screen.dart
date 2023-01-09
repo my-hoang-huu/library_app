@@ -8,16 +8,16 @@ import '../../../data/models/book.dart';
 import 'components/body.dart';
 import 'components/custom_app_bar.dart';
 
-class DetailsScreen extends MainPageLayout {
+class BookDetailsScreen extends MainPageLayout {
   static String routeName = "/details";
 
-  const DetailsScreen({super.key});
+  const BookDetailsScreen({super.key});
 
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
 }
 
-class _DetailsScreenState extends MainPageLayoutState<DetailsScreen, Book, BookListRepository> {
+class _DetailsScreenState extends MainPageLayoutState<BookDetailsScreen, Book, BookListRepository> {
   late final BookDetailsArguments agrs;
 
   bool notInitYet = true;

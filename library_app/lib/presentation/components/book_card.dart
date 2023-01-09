@@ -36,7 +36,7 @@ class BookCardHomePage extends StatelessWidget {
         child: GestureDetector(
           onTap: () => Navigator.pushNamed(
             context,
-            DetailsScreen.routeName,
+            BookDetailsScreen.routeName,
             arguments: BookDetailsArguments(book: book),
           ),
           child: Column(
