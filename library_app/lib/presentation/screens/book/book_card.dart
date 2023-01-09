@@ -17,9 +17,14 @@ class BookCard extends CardLayout {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          book.name,
-          style: Theme.of(context).textTheme.titleLarge,
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
+          child: Text(
+            book.name,
+            style: Theme.of(context).textTheme.titleLarge,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
         ),
         const SizedBox(
           height: 20,
