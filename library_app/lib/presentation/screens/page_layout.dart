@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/bloc/base_list_bloc.dart';
 import 'package:library_app/bloc/base_state.dart';
+import 'package:library_app/const_enum/constants.dart';
 import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/models/base_modal.dart';
 import 'package:library_app/data/repository/base_list_repository.dart';
@@ -48,6 +49,18 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
                   title: Text(
                     getTitle,
                   ),
+                  actions: [
+                    SizedBox(
+                      width: 70,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.add,
+                        ),
+                        color: kPrimaryColor,
+                        onPressed: () {},
+                      ),
+                    )
+                  ],
                   automaticallyImplyLeading: false)),
       body: BlocConsumer<BaseListBloc<M, R>, BaseState>(
         buildWhen: buildWhen,
