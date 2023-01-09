@@ -48,6 +48,14 @@ class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBotto
   }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _desController.dispose();
+    _pageCountController.dispose();
+    super.dispose();
+  }
+
+  @override
   List<Widget> body(BuildContext context) {
     return [
       TextFormFieldCustom.text(
