@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/data/models/reader.dart';
+import 'package:library_app/data/models/reader_modal.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
 import 'package:library_app/theme_size/size_config.dart';
 

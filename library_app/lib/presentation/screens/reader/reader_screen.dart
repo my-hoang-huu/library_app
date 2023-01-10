@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
-import 'package:library_app/data/models/reader.dart';
+import 'package:library_app/data/models/reader_modal.dart';
 
 import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
