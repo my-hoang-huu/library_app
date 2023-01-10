@@ -70,7 +70,6 @@ class BaseService {
 
   Duration get _requestTimeout => const Duration(seconds: 4);
   Future<Response> _get(String path) {
-    print(["service", DataConst.getUrl(path)]);
     return get(DataConst.getUrl(path));
   }
 

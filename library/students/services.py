@@ -11,17 +11,19 @@ students_schema = StudentSchema(many=True)
 
 def add_student_service():
     data = request.json
-    if (data and ('name' in data) and ('student_code' in data)
-            and ('gender' in data) and ('class_name' in data)):
+    if (data and ('name' in data) and ('student_code' in data)):
         name = data['name']
         student_code = data['student_code']
-        gender = data['gender']
-        class_name = data['class_name']
+        if('gender' in data):
+            gender = data['gender']
+        if('class_name' in data):
+            class_name = data['class_name']
         try:
             new_student = Students(name, student_code, gender, class_name)
             db.session.add(new_student)
             db.session.commit()
-            return jsonify({"message": "Add success!"}), 200
+            db.session.refresh(new_student)
+            return student_schema.jsonify(new_student)
         except IndentationError:
             db.session.rollback()
             return jsonify({"message": "Can not add student!"}), 400
