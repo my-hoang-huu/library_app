@@ -21,10 +21,10 @@ class BookBottomSheet extends BottomSheetLayout {
   });
 
   @override
-  _FilterCommissionBottomSheetState createState() => _FilterCommissionBottomSheetState();
+  _BookBottomSheetState createState() => _BookBottomSheetState();
 }
 
-class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<BookBottomSheet> {
+class _BookBottomSheetState extends BottomSheetLayoutState<BookBottomSheet> {
   bool get hasNationsDropdown => true;
 
   Book? get _initBook => widget.currentBook;

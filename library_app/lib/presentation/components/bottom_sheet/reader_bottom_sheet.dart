@@ -21,10 +21,10 @@ class ReaderBottomSheet extends BottomSheetLayout {
   });
 
   @override
-  _FilterCommissionBottomSheetState createState() => _FilterCommissionBottomSheetState();
+  _ReaderBottomSheetState createState() => _ReaderBottomSheetState();
 }
 
-class _FilterCommissionBottomSheetState extends BottomSheetLayoutState<ReaderBottomSheet> {
+class _ReaderBottomSheetState extends BottomSheetLayoutState<ReaderBottomSheet> {
   bool get hasNationsDropdown => true;
 
   Reader? get _initReader => widget.currentReader;
