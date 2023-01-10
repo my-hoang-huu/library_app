@@ -20,7 +20,7 @@ class ReaderCard extends CardLayout {
         const SizedBox(
           height: 12,
         ),
-        textLine("Student code:${reader.studentCode}", Theme.of(context).textTheme.titleSmall),
+        textLine("Student code: ${reader.studentCode}", Theme.of(context).textTheme.titleSmall),
         const SizedBox(
           height: 10,
         ),
