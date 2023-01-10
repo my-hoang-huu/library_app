@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_app/data/models/base_modal.dart';
-import 'package:library_app/data/models/reader_modal.dart';
+import 'package:library_app/data/models/reader.dart';
 import 'package:library_app/data/service/service.dart';
 
 import '../models/book.dart';

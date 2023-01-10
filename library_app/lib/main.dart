@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
-import 'package:library_app/data/models/reader_modal.dart';
+import 'package:library_app/data/models/reader.dart';
 import 'package:library_app/routes.dart';
 import 'package:library_app/theme_size/theme.dart';
 
