@@ -21,9 +21,9 @@ class Reader extends BaseModal {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'studentCode': studentCode,
+      'student_code': studentCode,
       'gender': gender,
-      'className': university,
+      'class_name': university,
     };
   }
 
@@ -31,9 +31,9 @@ class Reader extends BaseModal {
     return Reader(
       id: map['id'] as int,
       name: map['name'] as String,
-      studentCode: map['studentCode'] as String,
+      studentCode: map['student_code'] as String,
       gender: map['gender'] != null ? map['gender'] as String : null,
-      university: map['className'] as String,
+      university: map['class_name'] as String,
     );
   }
 

@@ -1,5 +1,16 @@
 
 [
+
+  {
+    "name": "My",
+    "gender": "1",
+    "student_code": "7_7_8_13.01_13.375_15.5_16_17.25_99_99",
+    "class_name": "UIT",
+    "ScheduleDestination": "Spawn_Locker_Hangout_Seat_LunchSpot_Seat_Clean_Hangout_Locker_Exit",
+    "ScheduleAction": "Stand_Stand_Read_Sit_Eat_Sit_Clean_Read_Shoes_Stand",
+    "Info": "An average student. \n \n Average grades, average looks, average life... \n \n I'm not sure what you see in him."
+  },
+
     {
       "name": "Senpai",
       "gender": "1",

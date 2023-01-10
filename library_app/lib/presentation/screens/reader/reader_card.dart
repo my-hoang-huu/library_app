@@ -70,6 +70,7 @@ class ReaderCard extends CardLayout {
         bottomSheetWidget: ReaderBottomSheet(
           title: "Update Reader",
           buttonTitle: "Update",
+          currentReader: reader,
           onDelete: () {
             context.read<BaseListBloc<Reader, ReaderListRepository>>().add(DeletedEvent(reader.id));
             Navigator.of(context).pop();
