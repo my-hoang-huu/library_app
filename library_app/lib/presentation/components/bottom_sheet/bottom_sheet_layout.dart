@@ -36,7 +36,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
               Expanded(
                 child: DefaultButton(
                   text: "Delete",
-                  press: () {},
+                  press: widget.onDelete,
                   buttonColor: Colors.red.shade700,
                 ),
               ),
