@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:library_app/presentation/screens/book/book_screen.dart';
 import 'package:library_app/presentation/screens/home/home_screen.dart';
 import 'package:library_app/presentation/screens/profile/profile_screen.dart';
-import 'package:library_app/presentation/screens/reader/reader_screen.dart';
 
 import '../../const_enum/constants.dart';
 import '../../const_enum/enums.dart';
+import '../screens/reader/reader_screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
