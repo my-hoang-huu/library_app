@@ -43,7 +43,7 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
         emit: emit,
         request: repository.delete(event.id),
         isDelete: true,
-        successMessage: "Book deleted successfully");
+        successMessage: "Deleted successfully");
   }
 
   Future<FutureOr<void>> _handleSubmission(
