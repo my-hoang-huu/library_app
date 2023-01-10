@@ -15,6 +15,7 @@ class ReaderBottomSheet extends BottomSheetLayout {
   final Reader? currentReader;
   const ReaderBottomSheet({
     super.key,
+    super.onDelete,
     required this.title,
     required this.buttonTitle,
     this.currentReader,

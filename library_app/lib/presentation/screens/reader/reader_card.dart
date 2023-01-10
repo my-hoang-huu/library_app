@@ -62,9 +62,10 @@ class ReaderCard extends CardLayout {
   void onTap() {
     showCustomBottomSheet(
         context: context,
-        bottomSheetWidget: const ReaderBottomSheet(
+        bottomSheetWidget: ReaderBottomSheet(
           title: "Update Reader",
           buttonTitle: "Update",
+          onDelete: () {},
         ));
   }
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/presentation/components/default_button.dart';
+import 'package:library_app/theme_size/size_config.dart';
 
 import '../text_form_field_custom.dart';
 
 abstract class BottomSheetLayout extends StatefulWidget {
-  const BottomSheetLayout({super.key});
+  const BottomSheetLayout({super.key, this.onDelete});
+
+  final void Function()? onDelete;
 
   @override
   BottomSheetLayoutState createState();
@@ -27,6 +30,25 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
 
   @override
   Widget build(BuildContext context) {
+    final bottomButtons = widget.onDelete != null
+        ? Row(
+            children: [
+              Expanded(
+                child: DefaultButton(
+                  text: "Delete",
+                  press: () {},
+                  buttonColor: Colors.red.shade700,
+                ),
+              ),
+              SizedBox(
+                width: SizeConfig.screenWidth * 0.05,
+              ),
+              Expanded(
+                child: _submitButton(context),
+              ),
+            ],
+          )
+        : _submitButton(context);
     return SingleChildScrollView(
       child: Padding(
         padding: MediaQuery.of(context).viewInsets,
@@ -58,7 +80,7 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
                   const SizedBox(
                     height: 32,
                   ),
-                  DefaultButton(press: () => onSubmit(context), text: buttonTitle),
+                  bottomButtons,
                 ],
               ),
             ),
@@ -70,6 +92,9 @@ abstract class BottomSheetLayoutState<T extends BottomSheetLayout> extends State
       ),
     );
   }
+
+  DefaultButton _submitButton(BuildContext context) =>
+      DefaultButton(press: () => onSubmit(context), text: buttonTitle);
 
   void onSubmit(BuildContext context);
 
@@ -126,7 +151,7 @@ Future<dynamic> showCustomBottomSheet<T extends BottomSheetLayout>(
     {required BuildContext context, required T bottomSheetWidget}) {
   return showModalBottomSheet(
     context: context,
-    enableDrag: false,
+    enableDrag: true,
     isDismissible: true,
     isScrollControlled: true,
     shape:
