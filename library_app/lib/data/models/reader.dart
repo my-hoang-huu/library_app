@@ -7,14 +7,14 @@ class Reader extends BaseModal {
   final String name;
   final String studentCode;
   final String? gender;
-  final String? className;
+  final String className;
   final String image;
   Reader(
       {required super.id,
       required this.name,
       required this.studentCode,
+      required this.className,
       this.gender,
-      this.className,
       this.image = "assets/images/avatar.png"});
 
   Map<String, dynamic> toMap() {
@@ -33,7 +33,7 @@ class Reader extends BaseModal {
       name: map['name'] as String,
       studentCode: map['studentCode'] as String,
       gender: map['gender'] != null ? map['gender'] as String : null,
-      className: map['className'] != null ? map['className'] as String : null,
+      className: map['className'] as String,
     );
   }
 

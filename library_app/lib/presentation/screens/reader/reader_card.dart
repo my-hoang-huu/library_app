@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_app/const_enum/constants.dart';
 import 'package:library_app/data/models/reader.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
 import 'package:library_app/theme_size/size_config.dart';
@@ -15,33 +16,29 @@ class ReaderCard extends CardLayout {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
-          child: Text(
-            reader.name,
-            style: Theme.of(context).textTheme.titleLarge,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-          ),
-        ),
+        textLine(reader.name, Theme.of(context).textTheme.titleLarge),
         const SizedBox(
-          height: 20,
+          height: 12,
         ),
-        // if (author != null)
-        //   Text(
-        //     author,
-        //     style: Theme.of(context).textTheme.titleSmall,
-        //   ),
-        ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
-          child: Text(
-            reader.studentCode,
-            style: Theme.of(context).textTheme.titleSmall,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-          ),
+        textLine("Student code:${reader.studentCode}", Theme.of(context).textTheme.titleSmall),
+        const SizedBox(
+          height: 10,
         ),
+        textLine(reader.className,
+            Theme.of(context).textTheme.titleLarge?.copyWith(color: kPrimaryColor))
       ],
+    );
+  }
+
+  ConstrainedBox textLine(String name, TextStyle? style) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
+      child: Text(
+        name,
+        style: style,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+      ),
     );
   }
 
