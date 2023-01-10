@@ -126,7 +126,7 @@ class ReaderListRepository extends BaseListRepository<Reader> {
             id: index,
             name: "Hoàng Hữu My",
             studentCode: '400000',
-            className: "UIT",
+            university: "UIT",
             gender: "Name")));
 
     ///real function

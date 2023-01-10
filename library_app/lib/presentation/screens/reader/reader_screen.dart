@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
 import 'package:library_app/data/models/reader.dart';
+import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
+import 'package:library_app/presentation/components/bottom_sheet/reader_bottom_sheet.dart';
 
 import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
@@ -51,11 +53,11 @@ class _ReaderScreenState extends MainPageLayoutState<ReaderScreen, Reader, Reade
 
   @override
   void onCreate(BuildContext context) {
-    // showCustomBottomSheet(
-    //     context: context,
-    //     bottomSheetWidget: const ReaderBottomSheet(
-    //       title: "Add reader",
-    //       buttonTitle: "Add",
-    //     ));
+    showCustomBottomSheet(
+        context: context,
+        bottomSheetWidget: const ReaderBottomSheet(
+          title: "Create Reader",
+          buttonTitle: "Add",
+        ));
   }
 }

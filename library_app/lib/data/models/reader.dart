@@ -7,13 +7,13 @@ class Reader extends BaseModal {
   final String name;
   final String studentCode;
   final String? gender;
-  final String className;
+  final String university;
   final String image;
   Reader(
       {required super.id,
       required this.name,
       required this.studentCode,
-      required this.className,
+      required this.university,
       this.gender,
       this.image = "assets/images/avatar.png"});
 
@@ -23,7 +23,7 @@ class Reader extends BaseModal {
       'name': name,
       'studentCode': studentCode,
       'gender': gender,
-      'className': className,
+      'className': university,
     };
   }
 
@@ -33,7 +33,7 @@ class Reader extends BaseModal {
       name: map['name'] as String,
       studentCode: map['studentCode'] as String,
       gender: map['gender'] != null ? map['gender'] as String : null,
-      className: map['className'] as String,
+      university: map['className'] as String,
     );
   }
 
@@ -44,7 +44,7 @@ class Reader extends BaseModal {
 
   @override
   String toString() {
-    return 'Reader(name: $name, studentCode: $studentCode, gender: $gender, className: $className)';
+    return 'Reader(name: $name, studentCode: $studentCode, gender: $gender, className: $university)';
   }
 
   @override
@@ -54,12 +54,12 @@ class Reader extends BaseModal {
     return other.name == name &&
         other.studentCode == studentCode &&
         other.gender == gender &&
-        other.className == className;
+        other.university == university;
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^ studentCode.hashCode ^ gender.hashCode ^ className.hashCode;
+    return name.hashCode ^ studentCode.hashCode ^ gender.hashCode ^ university.hashCode;
   }
 
   Reader copyWith({
@@ -74,7 +74,7 @@ class Reader extends BaseModal {
       name: name ?? this.name,
       studentCode: studentCode ?? this.studentCode,
       gender: gender ?? this.gender,
-      className: className ?? this.className,
+      university: className ?? this.university,
       image: image ?? this.image,
     );
   }

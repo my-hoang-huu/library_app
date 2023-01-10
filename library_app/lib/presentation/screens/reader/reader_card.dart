@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/const_enum/constants.dart';
 import 'package:library_app/data/models/reader.dart';
+import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
+import 'package:library_app/presentation/components/bottom_sheet/reader_bottom_sheet.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
 import 'package:library_app/theme_size/size_config.dart';
 
@@ -24,7 +26,7 @@ class ReaderCard extends CardLayout {
         const SizedBox(
           height: 10,
         ),
-        textLine(reader.className,
+        textLine(reader.university,
             Theme.of(context).textTheme.titleLarge?.copyWith(color: kPrimaryColor))
       ],
     );
@@ -58,10 +60,11 @@ class ReaderCard extends CardLayout {
 
   @override
   void onTap() {
-    // Navigator.pushNamed(
-    //   context,
-    //   ReaderDetailsScreen.routeName,
-    //   arguments: ReaderDetailsArguments(reader: reader),
-    // );
+    showCustomBottomSheet(
+        context: context,
+        bottomSheetWidget: const ReaderBottomSheet(
+          title: "Update Reader",
+          buttonTitle: "Update",
+        ));
   }
 }
