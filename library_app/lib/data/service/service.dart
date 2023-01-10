@@ -56,15 +56,14 @@ class BaseService {
   }
 
   _tryCatch(Response res) {
-    try {
-      if (res.statusCode == 200) {
-        final bodyRes = jsonDecode(res.body);
-        return bodyRes;
-      } else {
-        throw Exception(res.body);
-      }
-    } catch (e) {
-      throw e;
+    if (res.statusCode == 200) {
+      final bodyRes = jsonDecode(res.body);
+      return bodyRes;
+    }
+    if (res.statusCode == 404) {
+      return [];
+    } else {
+      throw Exception(res.body);
     }
   }
 
