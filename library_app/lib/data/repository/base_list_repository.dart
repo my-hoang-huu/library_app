@@ -62,18 +62,18 @@ abstract class BaseListRepository<T extends BaseModal> {
 class BookListRepository extends BaseListRepository<Book> {
   @override
   Future<List<Book>> _fetchData() async {
-    return Future.value(List.generate(
-        3,
-        (index) => Book(
-            description:
-                "A book description is a short summary of a book's story or content that is designed to “hook” a reader and lead to a sale. Typically, the book's description conveys important information about its topic or focus (in nonfiction) or the plot and tone (for a novel or any other piece of fiction",
-            id: index,
-            image: "assets/images/book01.png",
-            name: "test",
-            price: 2,
-            pageCount: 200,
-            isPopular: true,
-            author: "My")));
+    // return Future.value(List.generate(
+    //     3,
+    //     (index) => Book(
+    //         description:
+    //             "A book description is a short summary of a book's story or content that is designed to “hook” a reader and lead to a sale. Typically, the book's description conveys important information about its topic or focus (in nonfiction) or the plot and tone (for a novel or any other piece of fiction",
+    //         id: index,
+    //         image: "assets/images/book01.png",
+    //         name: "test",
+    //         price: 2,
+    //         pageCount: 200,
+    //         isPopular: true,
+    //         author: "My")));
 
     ///real function
     final List mapData = await _service.fetchInfo('/book-management/books');
@@ -101,9 +101,9 @@ class BookListRepository extends BaseListRepository<Book> {
     final response =
         await _service.createNewInfo('/book-management/book', newMapInfo: modal.toMap());
     if (kDebugMode) {
-      print(["base_repository: ", response]);
+      print(["base_repository: |||||||||||| ", response]);
     }
-    _addItem(modal);
+    _addItem(Book.fromMap(response));
     return _info!;
   }
 
@@ -120,14 +120,14 @@ class BookListRepository extends BaseListRepository<Book> {
 class ReaderListRepository extends BaseListRepository<Reader> {
   @override
   Future<List<Reader>> _fetchData() async {
-    return Future.value(List.generate(
-        3,
-        (index) => Reader(
-            id: index,
-            name: "Hoàng Hữu My",
-            studentCode: '400000',
-            university: "UIT",
-            gender: "Name")));
+    // return Future.value(List.generate(
+    //     3,
+    //     (index) => Reader(
+    //         id: index,
+    //         name: "Hoàng Hữu My",
+    //         studentCode: '400000',
+    //         university: "UIT",
+    //         gender: "Name")));
 
     ///real function
     final List mapData = await _service.fetchInfo('/student-management/students');
@@ -149,7 +149,7 @@ class ReaderListRepository extends BaseListRepository<Reader> {
   Future<List<Reader>> createNew(Reader modal) async {
     final response =
         await _service.createNewInfo('/student-management/student', newMapInfo: modal.toMap());
-    _addItem(modal);
+    _addItem(Reader.fromMap(response));
     return _info!;
   }
 
