@@ -80,7 +80,6 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           }
         },
         builder: (context, state) {
-          print(["bloc state", state]);
           if (state is LoadingState) {
             return const Center(child: CupertinoActivityIndicator());
           }
@@ -93,7 +92,7 @@ abstract class MainPageLayoutState<T extends MainPageLayout, M extends BaseModal
           if (state is ErrorState) {
             return Center(child: Text(" Error happened ${state.error.toString()}"));
           }
-          return Center(child: CupertinoActivityIndicator());
+          return const Center(child: CupertinoActivityIndicator());
         },
       ),
       bottomNavigationBar:

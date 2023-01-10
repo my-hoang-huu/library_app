@@ -8,28 +8,14 @@ class Reader extends BaseModal {
   final String studentCode;
   final String? gender;
   final String? className;
-  Reader({
-    required super.id,
-    required this.name,
-    required this.studentCode,
-    this.gender,
-    this.className,
-  });
-
-  Reader copyWith({
-    String? name,
-    String? studentCode,
-    String? gender,
-    String? className,
-  }) {
-    return Reader(
-      id: super.id,
-      name: name ?? this.name,
-      studentCode: studentCode ?? this.studentCode,
-      gender: gender ?? this.gender,
-      className: className ?? this.className,
-    );
-  }
+  final String image;
+  Reader(
+      {required super.id,
+      required this.name,
+      required this.studentCode,
+      this.gender,
+      this.className,
+      this.image = "assets/images/avatar.png"});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,5 +60,22 @@ class Reader extends BaseModal {
   @override
   int get hashCode {
     return name.hashCode ^ studentCode.hashCode ^ gender.hashCode ^ className.hashCode;
+  }
+
+  Reader copyWith({
+    String? name,
+    String? studentCode,
+    String? gender,
+    String? className,
+    String? image,
+  }) {
+    return Reader(
+      id: super.id,
+      name: name ?? this.name,
+      studentCode: studentCode ?? this.studentCode,
+      gender: gender ?? this.gender,
+      className: className ?? this.className,
+      image: image ?? this.image,
+    );
   }
 }

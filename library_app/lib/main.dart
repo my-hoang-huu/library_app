@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/bloc/base_even.dart';
+import 'package:library_app/data/models/reader.dart';
 import 'package:library_app/routes.dart';
 import 'package:library_app/theme_size/theme.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           create: (context) => BookListRepository(),
         ),
         RepositoryProvider(
-          create: (context) => BookListRepository(),
+          create: (context) => ReaderListRepository(),
         ),
       ],
       child: MultiBlocProvider(
@@ -38,7 +39,12 @@ class MyApp extends StatelessWidget {
             create: (context) => BaseListBloc<Book, BookListRepository>(
                 repository: context.read<BookListRepository>(), type: ModalType.bookList)
               ..add(const StartedEvent()),
-          )
+          ),
+          BlocProvider(
+            create: (context) => BaseListBloc<Reader, ReaderListRepository>(
+                repository: context.read<ReaderListRepository>(), type: ModalType.reader)
+              ..add(const StartedEvent()),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

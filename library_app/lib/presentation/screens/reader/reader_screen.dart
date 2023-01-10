@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/bloc/base_state.dart';
 import 'package:library_app/const_enum/enums.dart';
-import 'package:library_app/presentation/components/bottom_sheet/book_bottom_sheet.dart';
-import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
+import 'package:library_app/data/models/reader.dart';
 
-import '../../../data/models/book.dart';
 import '../../../data/repository/base_list_repository.dart';
 import '../page_layout.dart';
 import 'reader_card.dart';
@@ -15,19 +13,19 @@ class ReaderScreen extends MainPageLayout {
   const ReaderScreen({super.key});
 
   @override
-  _BookScreenState createState() => _BookScreenState();
+  _ReaderScreenState createState() => _ReaderScreenState();
 }
 
-class _BookScreenState extends MainPageLayoutState<ReaderScreen, Book, BookListRepository> {
+class _ReaderScreenState extends MainPageLayoutState<ReaderScreen, Reader, ReaderListRepository> {
   @override
-  ListView pageContent(BuildContext context, List<Book> info) {
+  ListView pageContent(BuildContext context, List<Reader> info) {
     return ListView.builder(
       padding: getPagePadding,
       itemCount: info.length,
       itemBuilder: (context, index) {
-        return BookCard(
+        return ReaderCard(
           context: context,
-          book: info[index],
+          reader: info[index],
         );
       },
     );
@@ -46,18 +44,18 @@ class _BookScreenState extends MainPageLayoutState<ReaderScreen, Book, BookListR
   Color? get backgroundColor => Colors.grey.shade100;
 
   @override
-  ModalType get screenType => ModalType.bookList;
+  ModalType get screenType => ModalType.reader;
 
   @override
   bool get hasBottomNavigationBar => true;
 
   @override
   void onCreate(BuildContext context) {
-    showCustomBottomSheet(
-        context: context,
-        bottomSheetWidget: const BookBottomSheet(
-          title: "Add reader",
-          buttonTitle: "Add",
-        ));
+    // showCustomBottomSheet(
+    //     context: context,
+    //     bottomSheetWidget: const ReaderBottomSheet(
+    //       title: "Add reader",
+    //       buttonTitle: "Add",
+    //     ));
   }
 }

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:library_app/data/models/book.dart';
+import 'package:library_app/data/models/reader.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
-import 'package:library_app/presentation/screens/book_details/book_details_screen.dart';
 import 'package:library_app/theme_size/size_config.dart';
 
-class BookCard extends CardLayout {
-  final Book book;
-  const BookCard({
+class ReaderCard extends CardLayout {
+  final Reader reader;
+  const ReaderCard({
     super.key,
     required super.context,
-    required this.book,
+    required this.reader,
   });
 
   Column contents(BuildContext context) {
-    final author = book.author;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
           child: Text(
-            book.name,
+            reader.name,
             style: Theme.of(context).textTheme.titleLarge,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
@@ -37,7 +35,7 @@ class BookCard extends CardLayout {
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: SizeConfig.screenWidth / 2),
           child: Text(
-            book.description,
+            reader.studentCode,
             style: Theme.of(context).textTheme.titleSmall,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
@@ -53,8 +51,8 @@ class BookCard extends CardLayout {
       SizedBox(
         height: 80,
         child: Hero(
-            tag: book.id.toString(),
-            child: Image.asset(book.image, alignment: Alignment.centerLeft)),
+            tag: reader.id.toString(),
+            child: Image.asset(reader.image, alignment: Alignment.centerLeft)),
       ),
       const SizedBox(width: 20),
       contents(context)
@@ -63,10 +61,10 @@ class BookCard extends CardLayout {
 
   @override
   void onTap() {
-    Navigator.pushNamed(
-      context,
-      BookDetailsScreen.routeName,
-      arguments: BookDetailsArguments(book: book),
-    );
+    // Navigator.pushNamed(
+    //   context,
+    //   ReaderDetailsScreen.routeName,
+    //   arguments: ReaderDetailsArguments(reader: reader),
+    // );
   }
 }
