@@ -7,7 +7,6 @@ import 'package:library_app/theme_size/theme.dart';
 import 'bloc/base_list_bloc.dart';
 import 'bloc/base_state.dart';
 import 'data/models/book.dart';
-import 'data/models/list_book.dart';
 import 'data/repository/base_list_repository.dart';
 import 'presentation/screens/sign_in/sign_in_screen.dart';
 
