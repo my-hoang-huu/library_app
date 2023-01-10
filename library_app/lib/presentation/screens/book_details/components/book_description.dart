@@ -27,24 +27,35 @@ class BookDescription extends StatelessWidget {
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Container(
-            padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-            width: getProportionateScreenWidth(64),
-            decoration: BoxDecoration(
-              color: book.isFavourite == true ? Color(0xFFFFE6E6) : Color(0xFFF5F6F9),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            book.pageCount != null
+                ? Container(
+                    margin: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+                    child: Text(
+                      "${book.pageCount} pages",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kPrimaryColor),
+                    ),
+                  )
+                : SizedBox.shrink(),
+            Container(
+              padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+              width: getProportionateScreenWidth(64),
+              decoration: BoxDecoration(
+                color: book.isFavourite == true ? Color(0xFFFFE6E6) : Color(0xFFF5F6F9),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                ),
               ),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Heart Icon_2.svg",
-              color: book.isFavourite == true ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
-              height: getProportionateScreenWidth(16),
-            ),
-          ),
+              child: SvgPicture.asset(
+                "assets/icons/Heart Icon_2.svg",
+                color: book.isFavourite == true ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
+                height: getProportionateScreenWidth(16),
+              ),
+            )
+          ],
         ),
         Padding(
           padding: EdgeInsets.only(
