@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:library_app/bloc/base_even.dart';
+import 'package:library_app/bloc/base_list_bloc.dart';
 import 'package:library_app/const_enum/constants.dart';
+import 'package:library_app/data/models/book.dart';
 import 'package:library_app/data/models/reader.dart';
+import 'package:library_app/data/repository/base_list_repository.dart';
 import 'package:library_app/presentation/components/bottom_sheet/bottom_sheet_layout.dart';
 import 'package:library_app/presentation/components/bottom_sheet/reader_bottom_sheet.dart';
 import 'package:library_app/presentation/components/card_layout.dart';
@@ -65,7 +70,10 @@ class ReaderCard extends CardLayout {
         bottomSheetWidget: ReaderBottomSheet(
           title: "Update Reader",
           buttonTitle: "Update",
-          onDelete: () {},
+          onDelete: () {
+            context.read<BaseListBloc<Reader, ReaderListRepository>>().add(DeletedEvent(reader.id));
+            Navigator.of(context).pop();
+          },
         ));
   }
 }
