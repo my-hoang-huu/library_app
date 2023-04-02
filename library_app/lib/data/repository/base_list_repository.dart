@@ -5,6 +5,9 @@ import 'package:library_app/data/service/service.dart';
 
 import '../models/book.dart';
 
+part 'book_list_repository.dart';
+part 'reader_list_repository.dart';
+
 abstract class BaseListRepository<T extends BaseModal> {
   List<T>? _info;
 
@@ -56,110 +59,5 @@ abstract class BaseListRepository<T extends BaseModal> {
       return;
     }
     _info!.add(modal);
-  }
-}
-
-class BookListRepository extends BaseListRepository<Book> {
-  @override
-  Future<List<Book>> _fetchData() async {
-    // return Future.value(List.generate(
-    //     3,
-    //     (index) => Book(
-    //         description:
-    //             "A book description is a short summary of a book's story or content that is designed to “hook” a reader and lead to a sale. Typically, the book's description conveys important information about its topic or focus (in nonfiction) or the plot and tone (for a novel or any other piece of fiction",
-    //         id: index,
-    //         image: "assets/images/book01.png",
-    //         name: "test",
-    //         price: 2,
-    //         pageCount: 200,
-    //         isPopular: true,
-    //         author: "My")));
-
-    ///real function
-    final List mapData = await _service.fetchInfo('/book-management/books');
-    if (kDebugMode) {
-      print(["base_repository: ", mapData]);
-    }
-    return mapData.map((e) => Book.fromMap(e)).toList();
-  }
-
-  @override
-  Future<List<Book>> updateInfo(Book modal) async {
-    final isSuccess =
-        await _service.updateInfo('/book-management/book/${modal.id}', updateMap: modal.toMap());
-    if (kDebugMode) {
-      print(["base_repository: ", isSuccess]);
-    }
-    if (isSuccess) {
-      _replace(modal);
-    }
-    return _info!;
-  }
-
-  @override
-  Future<List<Book>> createNew(Book modal) async {
-    final response =
-        await _service.createNewInfo('/book-management/book', newMapInfo: modal.toMap());
-    if (kDebugMode) {
-      print(["base_repository: |||||||||||| ", response]);
-    }
-    _addItem(Book.fromMap(response));
-    return _info!;
-  }
-
-  @override
-  Future<List<Book>> delete(int id) async {
-    final isSuccess = await _service.deleteInfo('/book-management/book/$id', id: id.toString());
-    if (isSuccess) {
-      _deleteItem(id);
-    }
-    return _info!;
-  }
-}
-
-class ReaderListRepository extends BaseListRepository<Reader> {
-  @override
-  Future<List<Reader>> _fetchData() async {
-    // return Future.value(List.generate(
-    //     3,
-    //     (index) => Reader(
-    //         id: index,
-    //         name: "Hoàng Hữu My",
-    //         studentCode: '400000',
-    //         university: "UIT",
-    //         gender: "Name")));
-
-    ///real function
-    final List mapData = await _service.fetchInfo('/student-management/students');
-    return mapData.map((e) => Reader.fromMap(e)).toList();
-  }
-
-  @override
-  Future<List<Reader>> updateInfo(Reader modal) async {
-    final isSuccess = await _service.updateInfo('/student-management/student/${modal.id}',
-        updateMap: modal.toMap());
-
-    if (isSuccess) {
-      _replace(modal);
-    }
-    return _info!;
-  }
-
-  @override
-  Future<List<Reader>> createNew(Reader modal) async {
-    final response =
-        await _service.createNewInfo('/student-management/student', newMapInfo: modal.toMap());
-    _addItem(Reader.fromMap(response));
-    return _info!;
-  }
-
-  @override
-  Future<List<Reader>> delete(int id) async {
-    final isSuccess =
-        await _service.deleteInfo('/student-management/student/$id', id: id.toString());
-    if (isSuccess) {
-      _deleteItem(id);
-    }
-    return _info!;
   }
 }
