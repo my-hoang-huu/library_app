@@ -13,7 +13,7 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
 
   BaseListBloc({required this.repository, required this.type}) : super(LoadingState(type)) {
     on<StartedEvent>(_onStarting);
-    on<SubmittedEvent<M>>(_inSubmiting);
+    on<SubmittedEvent<M>>(_inSubmitting);
     on<DeletedEvent>(_onDeleteItem);
   }
 
@@ -30,7 +30,7 @@ class BaseListBloc<M extends BaseModal, R extends BaseListRepository<M>>
     }
   }
 
-  Future<FutureOr<void>> _inSubmiting(SubmittedEvent<M> event, Emitter<BaseState> emit) async {
+  Future<FutureOr<void>> _inSubmitting(SubmittedEvent<M> event, Emitter<BaseState> emit) async {
     final M updateInfo = event.info;
     final function = event.submitType == SubmitType.update
         ? repository.updateInfo(updateInfo)
