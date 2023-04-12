@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "602785777707",
+    "project_id": "library-47048",
+    "storage_bucket": "library-47048.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602785777707:android:7cb8a63eb075a70863426e",
+        "android_client_info": {
+          "package_name": "com.huumy.library_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602785777707-6l41uup6ea9vv1mimjdtuli731t9ocfp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkuYf-V0GxsgSpFkFb8_pQNiM_ow8xHIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602785777707-6l41uup6ea9vv1mimjdtuli731t9ocfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
