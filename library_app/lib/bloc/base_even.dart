@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:library_app/data/models/base_modal.dart';
-import 'package:library_app/data/models/book.dart';
 
 /// evens are sent by client to request something from server
 ///
